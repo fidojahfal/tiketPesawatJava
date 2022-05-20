@@ -58,7 +58,7 @@ public class Main {
                         try {
                             nims = Integer.parseInt(nim);
                             ipks = Float.parseFloat(ipk);
-                            listMahasiswa.insertFirst(nama, nims, ipks);
+//                            listMahasiswa.insertFirst(nama, nims, ipks);
                             
                             System.out.println("\n------- List Anda --------");
                             listMahasiswa.print();
@@ -86,7 +86,7 @@ public class Main {
                         try {
                             nim = Integer.parseInt(NIM);
                             ipk = Float.parseFloat(IPK);
-                            listMahasiswa.insertLast(nama, nim, ipk);
+//                            listMahasiswa.insertLast(nama, nim, ipk);
                             
                             System.out.println("\n------- List Anda --------");
                             listMahasiswa.print();
@@ -122,7 +122,7 @@ public class Main {
                             posisi = Integer.parseInt(POSISI);
                             nim = Integer.parseInt(NIM);
                             ipk = Float.parseFloat(IPK);
-                            listMahasiswa.insertAt(posisi, nama, nim, ipk);
+//                            listMahasiswa.insertAt(posisi, nama, nim, ipk);
                             
                             System.out.println("\n------- List Anda --------");
                             listMahasiswa.print();
