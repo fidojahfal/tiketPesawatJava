@@ -9,7 +9,7 @@ import java.util.Scanner;
 /**
  *
  * @author fidoj
- *NYOBA PULL
+ *NYOBA PULL (pull udah dicoba)
  */
 public class Main {
 
