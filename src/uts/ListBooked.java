@@ -1,5 +1,7 @@
 package uts;
-
+/*
+Author : Kyroline
+*/
 public class ListBooked {
     ElementBooked first, last;
     
