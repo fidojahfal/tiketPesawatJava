@@ -130,10 +130,12 @@ public class ListBooked {
         if (first == null) {
             System.out.println("LINKED LIST KOSONG");
         } else {
-             while (pointer != null) {/*
-                System.out.print((pointer.data.nama) + "      ");
-                System.out.print((pointer.data.nim) + "      ");
-                System.out.println(pointer.data.ipk);*/
+             while (pointer != null) {
+                System.out.print((pointer.data.id) + "\t");
+                System.out.print((pointer.data.nama) + "\t");
+                System.out.print((pointer.data.jadwal) + "\t");
+                System.out.print((pointer.data.kelas) + "\t");
+                System.out.println((pointer.data.kursi) + "\t");
                 pointer = pointer.next;
             }
         }
