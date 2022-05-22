@@ -8,8 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author fidoj
- *NYOBA PULL (pull udah dicoba)
+ * @author fidoj NYOBA PULL (pull udah dicoba)
  */
 public class Main {
 
@@ -17,7 +16,8 @@ public class Main {
         String pilihan;
         int pilihan1 = 1;
         Scanner myObj = new Scanner(System.in);
-        DoubleLinkedList listMahasiswa = new DoubleLinkedList();
+        ListUnbooked unbooked = new ListUnbooked();
+        ElemenUnbooked list = unbooked.first;
 
         do {
             System.out.println("Pilih menu dibawah ini : ");
@@ -38,7 +38,7 @@ public class Main {
                 switch (pilihan1) {
                     case 1 -> {
                         System.out.println("\n------- List Anda --------");
-                        listMahasiswa.print();
+                        unbooked.print();
                         System.out.println("---------End List---------");
                         System.out.println("");
                         break;
@@ -46,13 +46,13 @@ public class Main {
                     case 2 -> {
                         System.out.print("Masukkan nama : ");
                         String nama = myObj.nextLine();
-                        
+
                         System.out.print("Masukkan NIM : ");
                         String nim = myObj.nextLine();
-                        
+
                         System.out.print("Masukkan IPK : ");
                         String ipk = myObj.nextLine();
-                        
+
                         int nims;
                         float ipks;
 
@@ -60,13 +60,13 @@ public class Main {
                             nims = Integer.parseInt(nim);
                             ipks = Float.parseFloat(ipk);
 //                            listMahasiswa.insertFirst(nama, nims, ipks);
-                            
+
                             System.out.println("\n------- List Anda --------");
-                            listMahasiswa.print();
+                            unbooked.print();
                             System.out.println("---------End List---------");
                             System.out.println("");
                             break;
-                            
+
                         } catch (NumberFormatException e) {
                             System.out.println("\nAda inputan selain angka!\n");
                         }
@@ -74,13 +74,13 @@ public class Main {
                     case 3 -> {
                         System.out.print("Masukkan nama : ");
                         String nama = myObj.nextLine();
-                        
+
                         System.out.print("Masukkan NIM : ");
                         String NIM = myObj.nextLine();
-                        
+
                         System.out.print("Masukkan IPK : ");
                         String IPK = myObj.nextLine();
-                        
+
                         int nim;
                         float ipk;
 
@@ -88,9 +88,9 @@ public class Main {
                             nim = Integer.parseInt(NIM);
                             ipk = Float.parseFloat(IPK);
 //                            listMahasiswa.insertLast(nama, nim, ipk);
-                            
+
                             System.out.println("\n------- List Anda --------");
-                            listMahasiswa.print();
+                            unbooked.print();
                             System.out.println("---------End List---------");
                             System.out.println("");
                             break;
@@ -107,14 +107,14 @@ public class Main {
                         System.out.print("Ingin menambahkan dari posisi berapa? ");
                         String POSISI = myObj.nextLine();
                         System.out.print("Masukkan nama : ");
-                        
+
                         String nama = myObj.nextLine();
                         System.out.print("Masukkan NIM : ");
-                        
+
                         String NIM = myObj.nextLine();
                         System.out.print("Masukkan IPK : ");
                         String IPK = myObj.nextLine();
-                        
+
                         int posisi;
                         int nim;
                         float ipk;
@@ -124,7 +124,7 @@ public class Main {
                             nim = Integer.parseInt(NIM);
                             ipk = Float.parseFloat(IPK);
 //                            listMahasiswa.insertAt(posisi, nama, nim, ipk);
-                            
+
                             System.out.println("\n------- List Anda --------");
                             listMahasiswa.print();
                             System.out.println("---------End List---------");
@@ -162,16 +162,53 @@ public class Main {
                         try {
                             posisi = Integer.parseInt(POSISI);
                             listMahasiswa.deleteAt(posisi);
-                            
+
                             System.out.println("");
                             System.out.println("\n------- List Anda --------");
                             listMahasiswa.print();
                             System.out.println("---------End List---------");
                             System.out.println("");
                             break;
-                            
+
                         } catch (NumberFormatException e) {
                             System.out.println("\nAda inputan selain angka!\n");
+                        }
+
+                    }
+                    case 8 -> {
+//                        for (int i = 1; i <= 10; i++) {
+//                            String j = Integer.toString(i);
+//                            unbooked.insertLast("", "", "09.00", j, "ekonomi");
+//                        }
+                        unbooked.insertLast("", "", "09.00", "21", "ekonomi");
+                        unbooked.insertLast("", "", "12.00", "10", "ekonomi");
+                        unbooked.insertLast("", "", "15.00", "5", "ekonomi");
+
+                    }
+                    case 9 -> {
+//                        tampilKursi(list.data.kursi);
+                        System.out.println("1. 09.00");
+                        System.out.println("2. 12.00");
+                        System.out.println("3. 15.00");
+                        System.out.print("Kursi dari jadwal mana yang ingin ditampilkan : ");
+                        String jadwal = myObj.next();
+                        switch (jadwal) {
+                            case "1" -> {
+                                unbooked.printKursi("09.00");
+                                break;
+                            }
+                            case "2" -> {
+                                unbooked.printKursi("12.00");
+                                break;
+                            }
+                            case "3" -> {
+                                unbooked.printKursi("15.00");
+                                break;
+                            }
+                            default -> {
+                                System.out.println("Tolong pilih jadwal yang ada!");
+                                break;
+                            }
                         }
 
                     }
@@ -189,7 +226,34 @@ public class Main {
 
         } while (pilihan1 != 0);
         System.out.println("------- List Anda --------");
-        listMahasiswa.print();
+        unbooked.print();
         System.out.println("---------End List---------");
     }
+
+//    static void tampilKursi(String kursi) {
+//        int b = 1;
+//        int j;
+//        for (char x = 'A'; x < 'D'; x++) {
+//            for (int i = 1; i < 2; i++) {
+//                for (j = b; j < b + 8; j += 3) {
+//                    String a = Character.toString(x);
+//                    if (j < 10) {
+//                        if()
+//                        System.out.print(j + a + "  ");
+//                        System.out.print(j + 1 + a + "  ");
+//                        System.out.print(j + 2 + a + "  ");
+//                        System.out.print("   ");
+//                    } else {
+//                        System.out.print(j + a + " ");
+//                        System.out.print(j + 1 + a + " ");
+//                        System.out.print(j + 2 + a + " ");
+//                        System.out.print("   ");
+//                    }
+//
+//                }
+//                b = j;
+//            }
+//            System.out.println("");
+//        }
+//    }
 }
