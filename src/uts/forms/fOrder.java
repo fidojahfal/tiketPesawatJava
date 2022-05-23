@@ -2,12 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package uts;
+package uts.forms;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
+import uts.ListBooked;
+/**
+ *
+ * @author Kyroline
+ */
 public class fOrder extends Frame implements ActionListener{
     Label lJadwal, lKelas, lSeat, lNama, lHarga; 
     List liJadwal, liKelas, liSeat;
@@ -15,7 +19,7 @@ public class fOrder extends Frame implements ActionListener{
     JTextField tbNama;
     JComboBox cbJadwal, cbKelas, cbKursi;
     ListBooked bookedList;
-    fOrder(ListBooked bookedList) {
+    public fOrder(ListBooked bookedList) {
         this.bookedList = bookedList;
         lJadwal = new Label("Jadwal Penerbangan");
         lJadwal.setBounds(50, 300, 150, 20);
@@ -50,6 +54,8 @@ public class fOrder extends Frame implements ActionListener{
         bOrder.setBounds(100, 360, 440, 30);
         add(bOrder);
         setTitle("Pemesanan Tiket Pesawat");
+        setSize(640, 480);
+        setLayout(null);
     }
 
     @Override
