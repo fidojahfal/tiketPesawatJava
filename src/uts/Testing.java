@@ -30,7 +30,7 @@ public class Testing {
         listBooked.insertLast("0004", "Reza Faza Ramadani", "Jam 7.00", "A04", "Ekonomi");
         listBooked.insertLast("0005", "Irza Adi Kurniawan", "Jam 7.00", "A05", "Ekonomi");*/
 //        fOrder f = new fOrder(listBooked, listUnbooked);
-          fPesan f = new fPesan(listUnbooked);
+          fPesan f = new fPesan(listUnbooked, listBooked);
 //        new fPesan(listUnbooked).setVisible(true);
 //        f.setLayout(null);
           f.setVisible(true);

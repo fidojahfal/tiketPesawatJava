@@ -10,7 +10,7 @@ public class ListBooked {
         last = null;
     }    
 
-    void insertFirst(String id, String nama, String jadwal, String kursi, String kelas) {
+    public void insertFirst(String id, String nama, String jadwal, String kursi, String kelas) {
         ElementBooked elemenBaru = new ElementBooked(id, nama, jadwal, kursi, kelas);
         elemenBaru.next = first;
         if (first != null) {
@@ -22,7 +22,7 @@ public class ListBooked {
         }
     }
     
-    void insertLast(String id, String nama, String jadwal, String kursi, String kelas) {
+    public void insertLast(String id, String nama, String jadwal, String kursi, String kelas) {
         ElementBooked elemenBaru = new ElementBooked(id, nama, jadwal, kursi, kelas);
         if (first == null) {
             first = elemenBaru;
@@ -44,7 +44,7 @@ public class ListBooked {
         }*/
     }
     
-    void deleteFirst() {
+    public void deleteFirst() {
         if (first == null) {
             first = null;
         } else {
@@ -53,7 +53,7 @@ public class ListBooked {
         }
     }
     
-    void deleteLast() {
+    public void deleteLast() {
         if (first == null) {
             first = null;
         } else {
@@ -71,7 +71,7 @@ public class ListBooked {
         }*/
     }
     
-    void insertAt(String tujuan, String id, String nama, String jadwal, String kursi, String kelas) {
+    public void insertAt(String tujuan, String id, String nama, String jadwal, String kursi, String kelas) {
         ElementBooked elemenBaru = new ElementBooked(id, nama, jadwal, kursi, kelas);
         if (first.data.nama.equals(tujuan)) {
             elemenBaru.next = first.next;
@@ -101,7 +101,7 @@ public class ListBooked {
         }
     }
     
-    void deleteAt(String tujuan) {
+    public void deleteAt(String tujuan) {
         if (first.data.nama.equals(tujuan)) {
             if (first.next != null) {
                 first.prev = null;
@@ -125,7 +125,7 @@ public class ListBooked {
         }
     }
     
-    void printFirst() {
+    public void printFirst() {
         ElementBooked pointer = first;
         if (first == null) {
             System.out.println("LINKED LIST KOSONG");
@@ -141,7 +141,7 @@ public class ListBooked {
         }
     }
     
-    void printLast() {
+    public void printLast() {
         ElementBooked pointer = last;
         if (last == null) {
             System.out.println("LINKED LIST KOSONG");

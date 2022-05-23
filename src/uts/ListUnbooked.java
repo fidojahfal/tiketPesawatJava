@@ -87,8 +87,29 @@ public class ListUnbooked {
         }
     }
 
-    void deleteAt(String jadwal, String kelas, String kursi) {
-
+    public void deleteAt(String jadwal, String kelas, String kursi) {
+        if (first.data.jadwal.equals(jadwal) && first.data.kelas.equals(kelas) && first.data.kelas.equals(kursi)) {
+            if (first.next != null) {
+                first.prev = null;
+            }
+            first = first.next;
+        } else if (last.data.jadwal.equals(jadwal) && last.data.kelas.equals(kelas) && last.data.kelas.equals(kursi)) {
+            last.prev.next = null;
+            last = last.prev;
+        }
+        else {
+            ElementUnbooked pointer = first;
+            while(pointer.next != null){
+                if (pointer.next.data.jadwal.equals(jadwal) && pointer.next.data.kelas.equals(kelas) && pointer.next.data.kelas.equals(kursi)) {    
+                    pointer.next.next.prev = pointer;
+                    pointer.next = pointer.next.next;
+                } 
+                else {
+                    pointer = pointer.next;
+                }
+            }
+        }
+/*
         if (first == null) {
             System.out.println("Tidak ada data, masukkan data terlebih dahulu!");
         } else {
@@ -109,10 +130,10 @@ public class ListUnbooked {
                 first = first.next;
                 first.prev = null;
             }
-        }
+        }*/
     }
 
-    void print() {
+    public void print() {
         ElementUnbooked pointer = first;
 
         if (pointer == null) {
