@@ -52,9 +52,9 @@ public class ListUnbooked {
         ElementUnbooked elemenBaru = new ElementUnbooked(id, nama, jadwal, kursi, kelas);
         if (first == null) {
             first = elemenBaru;
-        }else{
+        } else {
             ElementUnbooked pointer = first;
-            while(!pointer.data.jadwal.equals(jadwal) && !pointer.data.kelas.equals(kelas) && !pointer.data.kursi.equals(kursi)){
+            while (!pointer.data.jadwal.equals(jadwal) && !pointer.data.kelas.equals(kelas) && !pointer.data.kursi.equals(kursi)) {
                 pointer = pointer.next;
             }
         }
@@ -87,29 +87,7 @@ public class ListUnbooked {
         }
     }
 
-    public void deleteAt(String jadwal, String kelas, String kursi) {
-        if (first.data.jadwal.equals(jadwal) && first.data.kelas.equals(kelas) && first.data.kelas.equals(kursi)) {
-            if (first.next != null) {
-                first.prev = null;
-            }
-            first = first.next;
-        } else if (last.data.jadwal.equals(jadwal) && last.data.kelas.equals(kelas) && last.data.kelas.equals(kursi)) {
-            last.prev.next = null;
-            last = last.prev;
-        }
-        else {
-            ElementUnbooked pointer = first;
-            while(pointer.next != null){
-                if (pointer.next.data.jadwal.equals(jadwal) && pointer.next.data.kelas.equals(kelas) && pointer.next.data.kelas.equals(kursi)) {    
-                    pointer.next.next.prev = pointer;
-                    pointer.next = pointer.next.next;
-                } 
-                else {
-                    pointer = pointer.next;
-                }
-            }
-        }
-/*
+    public void deleteAt(String jadwal, String kursi, String kelas) {
         if (first == null) {
             System.out.println("Tidak ada data, masukkan data terlebih dahulu!");
         } else {
@@ -117,20 +95,22 @@ public class ListUnbooked {
             if (pointer.next == null && pointer.prev == null) {
                 first = null;
             }
-            while (!pointer.data.jadwal.equals(jadwal) && !pointer.data.kelas.equals(kelas) && !pointer.data.kelas.equals(kursi)) {
+            while (!(pointer.data.jadwal.equals(jadwal) && pointer.data.kursi.equals(kursi) && pointer.data.kelas.equals(kelas))) {
                 pointer = pointer.next;
+
             }
-            if (pointer.next != null && pointer.prev != null) {
-                pointer.next.prev = pointer.prev;
-                pointer.prev.next = pointer.next;
-            } else if (pointer.next == null && pointer.prev != null) {
+            if (pointer == last) {
                 last = last.prev;
                 last.next = null;
-            } else if (pointer.prev == null && pointer.next != null) {
+            } else if (pointer == first) {
                 first = first.next;
                 first.prev = null;
+            } else {
+                pointer.next.prev = pointer.prev;
+                pointer.prev.next = pointer.next;
             }
-        }*/
+        }
+
     }
 
     public void print() {

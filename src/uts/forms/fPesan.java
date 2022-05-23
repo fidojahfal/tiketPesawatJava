@@ -9,7 +9,7 @@ import java.util.Random;
 
 /**
  *
- * @author 
+ * @author
  */
 public class fPesan extends javax.swing.JFrame {
 
@@ -18,32 +18,31 @@ public class fPesan extends javax.swing.JFrame {
      */
     ListUnbooked unbookedList;
     ListBooked bookedList;
-    
-    static String getAlphaNumericString(int n)
-    {
-  
+
+    static String getAlphaNumericString(int n) {
+
         // chose a Character random from this String
         String AlphaNumericString = "0123456789";
-  
+
         // create StringBuffer size of AlphaNumericString
         StringBuilder sb = new StringBuilder(n);
-  
+
         for (int i = 0; i < n; i++) {
-  
+
             // generate a random number between
             // 0 to AlphaNumericString variable length
             int index
-                = (int)(AlphaNumericString.length()
-                        * Math.random());
-  
+                    = (int) (AlphaNumericString.length()
+                    * Math.random());
+
             // add Character one by one in end of sb
             sb.append(AlphaNumericString
-                          .charAt(index));
+                    .charAt(index));
         }
-  
+
         return sb.toString();
     }
-    
+
     public fPesan(ListUnbooked unbookedList, ListBooked bookedList) {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
@@ -199,17 +198,21 @@ public class fPesan extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String id = null;
-        if (cbKelas.getSelectedItem() == "Ekonomi")
+        if (cbKelas.getSelectedItem() == "Ekonomi") {
             id = "EK";
-        else if (cbKelas.getSelectedItem() == "Bisnis")
+        } else if (cbKelas.getSelectedItem() == "Bisnis") {
             id = "BI";
-        else if (cbKelas.getSelectedItem() == "First Class")
+        } else if (cbKelas.getSelectedItem() == "First Class") {
             id = "FC";
+        }
         id = id + getAlphaNumericString(5);
-        bookedList.insertLast(id, jTextField2.getText(), (String)cbJadwal.getSelectedItem(), 
-                (String)cbKursi.getSelectedItem(), (String)cbKelas.getSelectedItem());
-        bookedList.printFirst();
-        unbookedList.deleteAt((String)cbJadwal.getSelectedItem(), (String)cbKelas.getSelectedItem(), (String)cbKursi.getSelectedItem());
+        bookedList.insertLast(id, jTextField2.getText(), (String) cbJadwal.getSelectedItem(),
+                (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
+        String jadwal = cbJadwal.getSelectedItem().toString();
+        String kelas = cbKelas.getSelectedItem().toString();
+        String kursi = cbKursi.getSelectedItem().toString();
+        
+        unbookedList.deleteAt(jadwal, kursi, kelas);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJadwalActionPerformed
