@@ -18,6 +18,7 @@ public class fPesan extends javax.swing.JFrame {
     ListUnbooked unbookedList;
 
     public fPesan(ListUnbooked unbookedList) {
+        this.unbookedList = unbookedList;
         initComponents();
 //        cbKelas.addItem("Ekonomi");
 //        cbKelas.addItem("Bisnis");
@@ -25,10 +26,6 @@ public class fPesan extends javax.swing.JFrame {
 //        cbJadwal.addItem("09.00");
 //        cbJadwal.addItem("12.00");
 //        cbJadwal.addItem("15.00");
-    }
-
-    private fPesan() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -62,7 +59,7 @@ public class fPesan extends javax.swing.JFrame {
             }
         });
 
-        cbKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "Ekonomi", "Bisnis", "First Class" }));
+        cbKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Ekonomi", "Bisnis", "First Class" }));
         cbKelas.setName("cbKelas"); // NOI18N
         cbKelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +85,6 @@ public class fPesan extends javax.swing.JFrame {
 
         jLabel4.setText("Nama");
 
-        cbKursi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbKursi.setName("cbKursi"); // NOI18N
         cbKursi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,18 +105,13 @@ public class fPesan extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(154, 154, 154)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cbKelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbKelas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1))
+                        .addGap(50, 50, 50)
+                        .addComponent(jButton1))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
@@ -159,12 +150,7 @@ public class fPesan extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJadwalActionPerformed
-        
-        
-    }//GEN-LAST:event_cbJadwalActionPerformed
 
-    private void cbKelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKelasActionPerformed
-        // TODO add your handling code here:
         cbKursi.removeAllItems();
         ElementUnbooked pointer;
         pointer = unbookedList.first;
@@ -173,8 +159,28 @@ public class fPesan extends javax.swing.JFrame {
                 System.out.println("NANTI");
             } else {
                 while (pointer != null) {
-                    if (pointer.data.jadwal.equals(cbKelas.getSelectedItem())
-                            && pointer.data.kelas.equals(cbJadwal.getSelectedItem())) {
+                    if (pointer.data.kelas.equals(cbKelas.getSelectedItem())
+                            && pointer.data.jadwal.equals(cbJadwal.getSelectedItem())) {
+                        cbKursi.addItem(pointer.data.kursi);
+                    }
+                    pointer = pointer.next;
+                }
+                break;
+            }
+        }
+    }//GEN-LAST:event_cbJadwalActionPerformed
+
+    private void cbKelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKelasActionPerformed
+        cbKursi.removeAllItems();
+        ElementUnbooked pointer;
+        pointer = unbookedList.first;
+        for (int i = 1; i <= 36; i++) {
+            if (unbookedList.first == null) {
+                System.out.println("NANTI");
+            } else {
+                while (pointer != null) {
+                    if (pointer.data.kelas.equals(cbKelas.getSelectedItem())
+                            && pointer.data.jadwal.equals(cbJadwal.getSelectedItem())) {
                         cbKursi.addItem(pointer.data.kursi);
                     }
                     pointer = pointer.next;
@@ -191,37 +197,6 @@ public class fPesan extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(fPesan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(fPesan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(fPesan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(fPesan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new fPesan().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbJadwal;
