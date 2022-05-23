@@ -15,8 +15,7 @@ public class Testing {
         newList.insertLast("0003", "Febri Adi Kurniawan", "Jam 7.00", "A03", "Ekonomi");
         newList.insertLast("0004", "Reza Faza Ramadani", "Jam 7.00", "A04", "Ekonomi");
         newList.insertLast("0005", "Irza Adi Kurniawan", "Jam 7.00", "A05", "Ekonomi");
-        fOrder f = new fOrder(newList);
-        f.setSize(640, 480);
+        menuAwal f = new menuAwal();
         f.setLayout(null);
         f.setVisible(true);
     }

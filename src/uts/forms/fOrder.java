@@ -19,7 +19,7 @@ public class fOrder extends Frame implements ActionListener {
     JTextField tbNama;
     JComboBox cbJadwal, cbKelas, cbKursi;
     ListBooked bookedList;
-    public fOrder(ListBooked bookedList) {
+    public fOrder() {
         this.bookedList = bookedList;
         lJadwal = new Label("Jadwal Penerbangan");
         lJadwal.setBounds(50, 300, 150, 20);
