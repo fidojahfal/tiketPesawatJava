@@ -3,7 +3,7 @@ package uts;
 Author : Kyroline
 */
 public class ListBooked {
-    ElementBooked first, last;
+    public ElementBooked first, last;
     
     ListBooked () {
         first = null;

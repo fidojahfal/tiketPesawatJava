@@ -3,11 +3,11 @@ package uts;
 Author : Kyroline
 */
 public class Booked {
-    String id;
-    String nama;
-    String jadwal;
-    String kursi;
-    String kelas;
+    public String id;
+    public String nama;
+    public String jadwal;
+    public String kursi;
+    public String kelas;
     Booked(String id, String nama, String jadwal, String kursi, String kelas) {
         this.id = id;
         this.nama = nama;
