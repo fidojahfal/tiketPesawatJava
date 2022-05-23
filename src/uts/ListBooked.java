@@ -150,7 +150,7 @@ public class ListBooked {
                 System.out.print((pointer.data.nama) + "      ");
                 System.out.print((pointer.data.nim) + "      ");
                 System.out.println(pointer.data.ipk);*/
-                pointer = pointer.next;
+                pointer = pointer.prev;
             }
         }
     }

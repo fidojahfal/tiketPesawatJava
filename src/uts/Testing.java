@@ -9,6 +9,11 @@ public class Testing {
 
     public static void main(String[] args) {
         ListBooked newList = new ListBooked();
+        fOrder f = new fOrder(newList);
+        f.setSize(640, 480);
+        f.setLayout(null);
+        f.setVisible(true);
+        /*
         Scanner input = new Scanner(System.in);
         Scanner Input = new Scanner(System.in);
         int option = 0;
@@ -88,6 +93,6 @@ public class Testing {
                     newList.deleteAt(tujuan);
                     break;
             }
-        } while (option != 8);
+        } while (option != 8);*/
     }
 }
