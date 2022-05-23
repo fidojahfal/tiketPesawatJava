@@ -8,13 +8,13 @@ package uts;
  *
  * @author fidoj
  */
-public class ElemenUnbooked {
+public class ElementUnbooked {
 
-    Unbooked data;
-    ElemenUnbooked next;
-    ElemenUnbooked prev;
+    public Unbooked data;
+    public ElementUnbooked next;
+    public ElementUnbooked prev;
 
-    public ElemenUnbooked(String id, String nama, String jadwal, String kursi, String kelas) {
+    public ElementUnbooked(String id, String nama, String jadwal, String kursi, String kelas) {
         prev = null;
         data = new Unbooked(id, nama, jadwal, kursi, kelas);
         next = null;

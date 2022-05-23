@@ -10,16 +10,16 @@ package uts;
  */
 public class ListUnbooked {
 
-    ElemenUnbooked first;
-    ElemenUnbooked last;
+    public ElementUnbooked first;
+    public ElementUnbooked last;
 
-    ListUnbooked() {
+    public ListUnbooked() {
         first = null;
         last = null;
     }
 
     void insertFirst(String id, String nama, String jadwal, String kursi, String kelas) {
-        ElemenUnbooked elemenBaru = new ElemenUnbooked(id, nama, jadwal, kursi, kelas);
+        ElementUnbooked elemenBaru = new ElementUnbooked(id, nama, jadwal, kursi, kelas);
         if (first == null) {
             first = elemenBaru;
             last = elemenBaru;
@@ -32,13 +32,13 @@ public class ListUnbooked {
     }
 
     void insertLast(String id, String nama, String jadwal, String kursi, String kelas) {
-        ElemenUnbooked elemenBaru = new ElemenUnbooked(id, nama, jadwal, kursi, kelas);
+        ElementUnbooked elemenBaru = new ElementUnbooked(id, nama, jadwal, kursi, kelas);
 
         if (first == null) {
             first = elemenBaru;
             last = elemenBaru;
         } else {
-            ElemenUnbooked pointer = first;
+            ElementUnbooked pointer = first;
             while (pointer.next != null) {
                 pointer = pointer.next;
             }
@@ -49,11 +49,11 @@ public class ListUnbooked {
     }
 
     void insertAt(String id, String nama, String jadwal, String kursi, String kelas) {
-        ElemenUnbooked elemenBaru = new ElemenUnbooked(id, nama, jadwal, kursi, kelas);
+        ElementUnbooked elemenBaru = new ElementUnbooked(id, nama, jadwal, kursi, kelas);
         if (first == null) {
             first = elemenBaru;
         }else{
-            ElemenUnbooked pointer = first;
+            ElementUnbooked pointer = first;
             while(!pointer.data.jadwal.equals(jadwal) && !pointer.data.kelas.equals(kelas) && !pointer.data.kursi.equals(kursi)){
                 pointer = pointer.next;
             }
@@ -77,7 +77,7 @@ public class ListUnbooked {
         } else if (first.next == null) {
             first = null;
         } else {
-            ElemenUnbooked pointer = first;
+            ElementUnbooked pointer = first;
             while (pointer.next != last) {
                 pointer = pointer.next;
             }
@@ -92,7 +92,7 @@ public class ListUnbooked {
         if (first == null) {
             System.out.println("Tidak ada data, masukkan data terlebih dahulu!");
         } else {
-            ElemenUnbooked pointer = first;
+            ElementUnbooked pointer = first;
             if (pointer.next == null && pointer.prev == null) {
                 first = null;
             }
@@ -113,7 +113,7 @@ public class ListUnbooked {
     }
 
     void print() {
-        ElemenUnbooked pointer = first;
+        ElementUnbooked pointer = first;
 
         if (pointer == null) {
             System.out.println("Linked List Kosong!");
@@ -133,7 +133,7 @@ public class ListUnbooked {
     }
 
 //    void printKursi(String jadwal) {
-//        ElemenUnbooked pointer = first;
+//        ElementUnbooked pointer = first;
 //        int e = 1;
 //        int j;
 //        for (char x = 'A'; x < 'D'; x++) {

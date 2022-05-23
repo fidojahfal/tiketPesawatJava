@@ -7,7 +7,7 @@ package uts.forms;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import uts.ListBooked;
+import uts.*;
 /**
  *
  * @author Kyroline
@@ -19,19 +19,21 @@ public class fOrder extends Frame implements ActionListener {
     JTextField tbNama;
     JComboBox cbJadwal, cbKelas, cbKursi;
     ListBooked bookedList;
-    public fOrder() {
+    ListUnbooked unbookedList;
+    
+    public fOrder(ListBooked bookedList, ListUnbooked unbookedList) {
         this.bookedList = bookedList;
-        lJadwal = new Label("Jadwal Penerbangan");
+        lJadwal = new Label("Waktu Penerbangan");
         lJadwal.setBounds(50, 300, 150, 20);
         add(lJadwal);
-        String[] jadwal = {"Jam 7.00", "Jam 12.00", "Jam 15.00"};
+        String[] jadwal = {"", "09.00", "12.00", "15.00"};
         cbJadwal = new JComboBox(jadwal);
         cbJadwal.setBounds(200, 300, 100, 20);
         add(cbJadwal);
         lKelas = new Label("Kelas");
         lKelas.setBounds(300, 300, 50, 20);
         add(lKelas);
-        String[] kelas = {"Ekonomi", "Bisnis", "First Class"};
+        String[] kelas = {"", "Ekonomi", "Bisnis", "First Class"};
         cbKelas = new JComboBox(kelas);
         cbKelas.setBounds(350, 300, 100, 20);
         add(cbKelas);
@@ -54,9 +56,32 @@ public class fOrder extends Frame implements ActionListener {
         bOrder.setBounds(100, 360, 440, 30);
         add(bOrder);
         bOrder.addActionListener(this);
+        cbKelas.addActionListener (new ActionListener () {
+            public void actionPerformed(ActionEvent e) {
+            
+            cbKursi.removeAllItems();
+            ElementUnbooked pointer;
+            pointer = unbookedList.first;
+            for (int i = 1; i <=36; i++) {
+                if (unbookedList.first == null) {
+                    System.out.println("NANTI");
+                } else {
+                    while (pointer != null) {
+                        if (pointer.data.jadwal.equals(cbJadwal.getSelectedItem()) && 
+                                pointer.data.kelas.equals(cbKelas.getSelectedItem()))
+                            cbKursi.addItem(pointer.data.kursi);
+                        pointer = pointer.next;
+                    }
+                    break;
+                }
+            }
+            }
+        });
         setTitle("Pemesanan Tiket Pesawat");
         setSize(640, 480);
         setLayout(null);
+        cbKursi.removeAllItems();
+        
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -64,6 +89,9 @@ public class fOrder extends Frame implements ActionListener {
             fPrint submit = new fPrint(bookedList);
             submit.setVisible(true);
             lHarga.setText("Harga Rp100.000,-");
+        }
+        if (e.getSource() == cbKelas) {
+            
         }
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

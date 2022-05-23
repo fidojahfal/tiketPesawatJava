@@ -9,11 +9,11 @@ package uts;
  * @author fidoj
  */
 public class Unbooked {
-    String id;
-    String nama;
-    String jadwal;
-    String kursi;
-    String kelas;
+    public String id;
+    public String nama;
+    public String jadwal;
+    public String kursi;
+    public String kelas;
     
     public Unbooked(String id, String nama, String jadwal, String kursi, String kelas){
         this.id = id;

@@ -17,7 +17,7 @@ public class Main {
         int pilihan1 = 1;
         Scanner myObj = new Scanner(System.in);
         ListUnbooked unbooked = new ListUnbooked();
-        ElemenUnbooked list = unbooked.first;
+        ElementUnbooked list = unbooked.first;
 
         do {
             System.out.println("Pilih menu dibawah ini : ");
