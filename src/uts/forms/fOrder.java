@@ -12,7 +12,7 @@ import uts.ListBooked;
  *
  * @author Kyroline
  */
-public class fOrder extends Frame implements ActionListener{
+public class fOrder extends Frame implements ActionListener {
     Label lJadwal, lKelas, lSeat, lNama, lHarga; 
     List liJadwal, liKelas, liSeat;
     Button bOrder;
@@ -48,21 +48,27 @@ public class fOrder extends Frame implements ActionListener{
         tbNama.setBounds(100, 330, 300, 20);
         add(tbNama);
         lHarga = new Label("Harga");
-        lHarga.setBounds(420, 330, 100, 20);
+        lHarga.setBounds(420, 330, 500, 20);
         add(lHarga);
         bOrder = new Button("Pesan");
         bOrder.setBounds(100, 360, 440, 30);
         add(bOrder);
+        bOrder.addActionListener(this);
         setTitle("Pemesanan Tiket Pesawat");
         setSize(640, 480);
         setLayout(null);
     }
 
-    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bOrder) {
-            //fOrder.setVisible(false);
+            fPrint submit = new fPrint(bookedList);
+            submit.setVisible(true);
+            lHarga.setText("Harga Rp100.000,-");
         }
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    /*public static void main(String[] args) {
+        fOrder f = new fOrder();
+        f.setVisible(true);
+    }*/
 }

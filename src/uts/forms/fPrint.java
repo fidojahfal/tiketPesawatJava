@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import uts.ListBooked;
+import uts.ElementBooked;
 import uts.ListUnbooked;
 /**
  *
@@ -18,9 +19,12 @@ public class fPrint extends Frame implements ActionListener {
     Button bPrintFirst, bPrintAt, bPrintLast;
     ListBooked listBooked;
     ListUnbooked listUnbooked;
-    public fPrint (/*ListBooked listBooked, ListUnbooked listUnbooked*/) {
+    public fPrint (ListBooked listBooked/*, ListUnbooked listUnbooked*/) {
         this.listBooked = listBooked;
-        this.listUnbooked = listUnbooked;
+        //this.listUnbooked = listUnbooked;
+        
+        
+        
         liData = new List();
         liData.setBounds(50, 50, 540, 200);
         bPrintFirst = new Button("Print Dari Depan");
@@ -36,10 +40,35 @@ public class fPrint extends Frame implements ActionListener {
         setTitle("Melihat Data Pemesan");
         setSize(640, 480);
         setLayout(null);
+        bPrintFirst.addActionListener(this);
+        bPrintLast.addActionListener(this);
+        
+        
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (e.getSource() == bPrintFirst) {
+            ElementBooked pointer = listBooked.first;
+            if (listBooked.first == null) {
+                System.out.println("LINKED LIST KOSONG");
+            } else {
+                while (pointer != null) {
+                    liData.add(pointer.data.id + " " + pointer.data.nama + " " + pointer.data.jadwal + " " + pointer.data.kelas + " " + pointer.data.kursi);
+                    pointer = pointer.next;
+                }
+            }
+        } else if (e.getSource() == bPrintLast) {
+            ElementBooked pointer = listBooked.last;
+            if (listBooked.last == null) {
+                System.out.println("LINKED LIST KOSONG");
+            } else {
+                while (pointer != null) {
+                    liData.add(pointer.data.id + " " + pointer.data.nama + " " + pointer.data.jadwal + " " + pointer.data.kelas + " " + pointer.data.kursi);
+                    pointer = pointer.prev;
+                }
+            }
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     /*public static void main(String[] args) {
