@@ -86,8 +86,8 @@ public class menuAwal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        fOrder order = new fOrder();
-        order.setVisible(true);
+//        fPesan order = new fPesan();
+//        order.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

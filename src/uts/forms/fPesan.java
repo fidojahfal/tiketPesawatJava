@@ -19,12 +19,12 @@ public class fPesan extends javax.swing.JFrame {
 
     public fPesan(ListUnbooked unbookedList) {
         initComponents();
-        cbKelas.addItem("Ekonomi");
-        cbKelas.addItem("Bisnis");
-        cbKelas.addItem("First Class");
-        cbJadwal.addItem("09.00");
-        cbJadwal.addItem("12.00");
-        cbJadwal.addItem("15.00");
+//        cbKelas.addItem("Ekonomi");
+//        cbKelas.addItem("Bisnis");
+//        cbKelas.addItem("First Class");
+//        cbJadwal.addItem("09.00");
+//        cbJadwal.addItem("12.00");
+//        cbJadwal.addItem("15.00");
     }
 
     private fPesan() {
@@ -54,7 +54,7 @@ public class fPesan extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(640, 480));
 
-        cbJadwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbJadwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "09.00", "12.00", "15.00" }));
         cbJadwal.setName("cbJadwal"); // NOI18N
         cbJadwal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +62,7 @@ public class fPesan extends javax.swing.JFrame {
             }
         });
 
-        cbKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbKelas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "  ", "Ekonomi", "Bisnis", "First Class" }));
         cbKelas.setName("cbKelas"); // NOI18N
         cbKelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -88,7 +88,7 @@ public class fPesan extends javax.swing.JFrame {
 
         jLabel4.setText("Nama");
 
-        cbKursi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbKursi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Item 1", "Item 2", "Item 3", "Item 4" }));
         cbKursi.setName("cbKursi"); // NOI18N
         cbKursi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,6 +159,12 @@ public class fPesan extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJadwalActionPerformed
+        
+        
+    }//GEN-LAST:event_cbJadwalActionPerformed
+
+    private void cbKelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKelasActionPerformed
+        // TODO add your handling code here:
         cbKursi.removeAllItems();
         ElementUnbooked pointer;
         pointer = unbookedList.first;
@@ -167,8 +173,8 @@ public class fPesan extends javax.swing.JFrame {
                 System.out.println("NANTI");
             } else {
                 while (pointer != null) {
-                    //if (pointer.data.jadwal.equals(cbKelas.getSelectedItem())
-                    //        && pointer.data.kelas.equals(cbJadwal.getSelectedItem())) {
+                    if (pointer.data.jadwal.equals(cbKelas.getSelectedItem())
+                            && pointer.data.kelas.equals(cbJadwal.getSelectedItem())) {
                         cbKursi.addItem(pointer.data.kursi);
                     }
                     pointer = pointer.next;
@@ -176,10 +182,6 @@ public class fPesan extends javax.swing.JFrame {
                 break;
             }
         }
-    }//GEN-LAST:event_cbJadwalActionPerformed
-
-    private void cbKelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKelasActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_cbKelasActionPerformed
 
     private void cbKursiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbKursiActionPerformed
