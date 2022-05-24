@@ -102,19 +102,19 @@ public class ListBooked {
     }
     
     public void deleteAt(String tujuan) {
-        if (first.data.nama.equals(tujuan)) {
+        if (first.data.id.equals(tujuan)) {
             if (first.next != null) {
                 first.prev = null;
             }
             first = first.next;
-        } else if (last.data.nama.equals(tujuan)) {
+        } else if (last.data.id.equals(tujuan)) {
             last.prev.next = null;
             last = last.prev;
         }
         else {
             ElementBooked pointer = first;
             while(pointer.next != null){
-                if (pointer.next.data.nama.equals(tujuan)) {    
+                if (pointer.next.data.id.equals(tujuan)) {    
                     pointer.next.next.prev = pointer;
                     pointer.next = pointer.next.next;
                 } 

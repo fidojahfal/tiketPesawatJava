@@ -5,6 +5,7 @@
 package uts.forms;
 
 import uts.*;
+
 /**
  *
  * @author Admin
@@ -16,6 +17,7 @@ public class fCek extends javax.swing.JFrame {
      */
     ListUnbooked unbookedList;
     ListBooked bookedList;
+
     public fCek(ListUnbooked unbookedList, ListBooked bookedList) {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
@@ -41,6 +43,11 @@ public class fCek extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bPrintLast.setText("Tampilkan Dari Belakang");
+        bPrintLast.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPrintLastActionPerformed(evt);
+            }
+        });
 
         bPrintAt.setText("Cari Data");
         bPrintAt.addActionListener(new java.awt.event.ActionListener() {
@@ -63,27 +70,27 @@ public class fCek extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(272, 272, 272)
-                .addComponent(lTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(liTiket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(bPrintFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                        .addComponent(bPrintFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(57, 57, 57)
                         .addComponent(bPrintAt, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(88, 88, 88)
-                        .addComponent(bPrintLast, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                        .addComponent(bPrintLast, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(lTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(28, 28, 28)
                 .addComponent(lTitle)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(liTiket, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -102,18 +109,52 @@ public class fCek extends javax.swing.JFrame {
         if (bookedList.first == null) {
             System.out.println("LINKED LIST KOSONG");
         } else {
-            while (pointer != null) {
-                liTiket.add(pointer.data.id + " " + pointer.data.nama + " " + pointer.data.jadwal + " " + pointer.data.kelas + " " + pointer.data.kursi);
+            liTiket.add("------- Hasil Pencarian --------");
+            int i = 1;
+            while (pointer != null && i <= 324) {
+                liTiket.add("-------------" + i + "------------\n");
+                liTiket.add("Id : " + pointer.data.id);
+                liTiket.add("Nama : " + pointer.data.nama);
+                liTiket.add("Jadwal : " + pointer.data.jadwal);
+                liTiket.add("Kursi : " + pointer.data.kelas);
+                liTiket.add("\nKelas : " + pointer.data.kursi);
+
                 pointer = pointer.next;
+                i++;
             }
+            liTiket.add("--------- End List ---------");
         }
     }//GEN-LAST:event_bPrintFirstActionPerformed
 
     private void bPrintAtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintAtActionPerformed
-        fCari cariData= new fCari(liTiket, unbookedList, bookedList);
+        fCari cariData = new fCari(liTiket, unbookedList, bookedList);
         cariData.setResizable(false);
         cariData.setVisible(true);
     }//GEN-LAST:event_bPrintAtActionPerformed
+
+    private void bPrintLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintLastActionPerformed
+        // TODO add your handling code here:
+        liTiket.removeAll();
+        ElementBooked pointer = bookedList.last;
+        if (bookedList.first == null) {
+            System.out.println("LINKED LIST KOSONG");
+        } else {
+            liTiket.add("------- Hasil Pencarian --------");
+            int i = 1;
+            while (pointer != null && i <= 324) {
+                liTiket.add("-------------" + i + "------------\n");
+                liTiket.add("Id : " + pointer.data.id);
+                liTiket.add("Nama : " + pointer.data.nama);
+                liTiket.add("Jadwal : " + pointer.data.jadwal);
+                liTiket.add("Kursi : " + pointer.data.kelas);
+                liTiket.add("\nKelas : " + pointer.data.kursi);
+
+                pointer = pointer.prev;
+                i++;
+            }
+            liTiket.add("--------- End List ---------");
+        }
+    }//GEN-LAST:event_bPrintLastActionPerformed
 
     /**
      * @param args the command line arguments

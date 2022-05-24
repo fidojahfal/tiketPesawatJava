@@ -57,6 +57,11 @@ public class fMenu extends javax.swing.JFrame {
 
         bBatal.setText("Pembatalan Tiket");
         bBatal.setName("pembatalanTiketButton"); // NOI18N
+        bBatal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBatalActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("PEMESANAN TIKET PESAWAT");
@@ -108,6 +113,13 @@ public class fMenu extends javax.swing.JFrame {
         form.setVisible(true);
         form.setResizable(false);
     }//GEN-LAST:event_bPrintActionPerformed
+
+    private void bBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBatalActionPerformed
+        // TODO add your handling code here:
+        fBatal cancel = new fBatal(unbookedList, bookedList);
+        cancel.setVisible(true);
+        cancel.setResizable(false);
+    }//GEN-LAST:event_bBatalActionPerformed
 
     /**
      * @param args the command line arguments

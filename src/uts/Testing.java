@@ -1,6 +1,6 @@
 /*
     Double Linked DoubleCircularLinkedList Circular DoubleCircularLinkedList
-*/
+ */
 package uts;
 
 import uts.forms.*;
@@ -24,10 +24,11 @@ public class Testing {
                 listUnbooked.insertLast("", "", Integer.toString(9 + (3 * k)) + ".00", "C" + j, "First Class");
             }
         }
-        fMenu f = new fMenu (listUnbooked, listBooked);
+        fMenu f = new fMenu(listUnbooked, listBooked);
         f.setVisible(true);
         f.setResizable(false);
 //        new fPesan(listUnbooked).setVisible(true);
 //        f.setLayout(null);
+
     }
 }

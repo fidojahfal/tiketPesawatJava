@@ -195,29 +195,38 @@ public class fPesan extends javax.swing.JFrame {
         if (bookedList.first != null) {
             boolean valid = false;
             String idTemp;
-            while (valid) {
+             do{
                 ElementBooked pointer = bookedList.first;
-                idTemp = id + getAlphaNumericString(1);
+                idTemp = id + getAlphaNumericString(4);
                 while (pointer != null) {
-                    if (pointer.data.id.equals(id)) {
+                    if (pointer.data.id.equals(idTemp)) {
                         //cbKursi.addItem(pointer.data.kursi);
                         valid = true;
                         id = idTemp;
                         break;
                     }
+                    if(pointer.next == null && !(pointer.data.id.equals(idTemp))){
+                        valid = false;
+                        break;
+                    }
                     pointer = pointer.next;
                 }
-            }
+            }while (valid);
+             id = idTemp;
         } else {
-            id = id + getAlphaNumericString(1);
+            id = id + getAlphaNumericString(4);
         }
         bookedList.insertLast(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
                 (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
         String jadwal = cbJadwal.getSelectedItem().toString();
         String kelas = cbKelas.getSelectedItem().toString();
         String kursi = cbKursi.getSelectedItem().toString();
-        
+
         unbookedList.deleteAt(jadwal, kursi, kelas);
+        tbNama.setText("");
+        cbJadwal.setSelectedIndex(0);
+        cbKelas.setSelectedIndex(0);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJadwalActionPerformed

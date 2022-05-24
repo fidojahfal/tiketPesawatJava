@@ -48,14 +48,35 @@ public class ListUnbooked {
         }
     }
 
-    void insertAt(String id, String nama, String jadwal, String kursi, String kelas) {
+    public void insertAt(String id, String nama, String jadwal, String kursi, String kelas) {
         ElementUnbooked elemenBaru = new ElementUnbooked(id, nama, jadwal, kursi, kelas);
+
+        String value = kursi;
+        String alphabet = value.replaceAll("[^A-C]", "");
+        int number = Integer.parseInt(value.replaceAll("[^0-9]", "")) - 1;
+        String tempKursi = alphabet + Integer.toString(number);
+        System.out.println(tempKursi);
+
         if (first == null) {
+            first = elemenBaru;
+        } else if (number == 0) {
+            elemenBaru.next = first;
+            first.prev = elemenBaru;
             first = elemenBaru;
         } else {
             ElementUnbooked pointer = first;
-            while (!pointer.data.jadwal.equals(jadwal) && !pointer.data.kelas.equals(kelas) && !pointer.data.kursi.equals(kursi)) {
+            while (!(pointer.data.jadwal.equals(jadwal) && pointer.data.kelas.equals(kelas) && pointer.data.kursi.equals(tempKursi))) {
                 pointer = pointer.next;
+            }
+            if (pointer.next != null) {
+                elemenBaru.next = pointer.next;
+                pointer.next.prev = elemenBaru;
+                elemenBaru.prev = pointer;
+                pointer.next = elemenBaru;
+            } else {
+                last.next = elemenBaru;
+                elemenBaru.prev = last;
+                last = elemenBaru;
             }
         }
     }
