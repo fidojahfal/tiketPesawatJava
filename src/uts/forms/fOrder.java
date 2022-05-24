@@ -21,7 +21,8 @@ public class fOrder extends Frame implements ActionListener {
     ListBooked bookedList;
     ListUnbooked unbookedList;
     
-    public fOrder(ListBooked bookedList, ListUnbooked unbookedList) {
+    public fOrder(ListUnbooked unbookedList, ListBooked bookedList) {
+        this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         lJadwal = new Label("Waktu Penerbangan");
         lJadwal.setBounds(50, 300, 150, 20);
@@ -86,7 +87,7 @@ public class fOrder extends Frame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bOrder) {
-            fPrint submit = new fPrint(bookedList);
+            fPrint submit = new fPrint(unbookedList, bookedList);
             submit.setVisible(true);
             lHarga.setText("Harga Rp100.000,-");
         }

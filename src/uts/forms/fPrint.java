@@ -17,10 +17,12 @@ import uts.ListUnbooked;
 public class fPrint extends Frame implements ActionListener {
     List liData;
     Button bPrintFirst, bPrintAt, bPrintLast;
-    ListBooked listBooked;
     ListUnbooked listUnbooked;
-    public fPrint (ListBooked listBooked/*, ListUnbooked listUnbooked*/) {
+    ListBooked listBooked;
+    public fPrint (ListUnbooked listUnbooked, ListBooked listBooked) {
+        this.listUnbooked = listUnbooked;
         this.listBooked = listBooked;
+        this.setResizable(false);
         //this.listUnbooked = listUnbooked;
         
         
