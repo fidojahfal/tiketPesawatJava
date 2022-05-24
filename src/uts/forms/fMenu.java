@@ -104,7 +104,7 @@ public class fMenu extends javax.swing.JFrame {
 
     private void bPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintActionPerformed
         // TODO add your handling code here:
-        fPrint form = new fPrint(unbookedList, bookedList);
+        fCek form = new fCek(unbookedList, bookedList);
         form.setVisible(true);
         form.setResizable(false);
     }//GEN-LAST:event_bPrintActionPerformed

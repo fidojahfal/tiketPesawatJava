@@ -32,27 +32,29 @@ public class fCek extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        liTiket = new javax.swing.JList<>();
         bPrintLast = new javax.swing.JButton();
         bPrintAt = new javax.swing.JButton();
         bPrintFirst = new javax.swing.JButton();
         lTitle = new javax.swing.JLabel();
+        liTiket = new java.awt.List();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        liTiket.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(liTiket);
 
         bPrintLast.setText("Tampilkan Dari Belakang");
 
         bPrintAt.setText("Cari Data");
+        bPrintAt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPrintAtActionPerformed(evt);
+            }
+        });
 
         bPrintFirst.setText("Tampilkan Dari Depan");
+        bPrintFirst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bPrintFirstActionPerformed(evt);
+            }
+        });
 
         lTitle.setText("Cek Data Pemesan Tiket");
 
@@ -61,20 +63,20 @@ public class fCek extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(272, 272, 272)
+                .addComponent(lTitle)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(liTiket, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(bPrintFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                         .addComponent(bPrintAt, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(88, 88, 88)
                         .addComponent(bPrintLast, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(272, 272, 272)
-                .addComponent(lTitle)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,8 +84,8 @@ public class fCek extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(lTitle)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(liTiket, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bPrintAt, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bPrintLast, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -93,6 +95,25 @@ public class fCek extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bPrintFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintFirstActionPerformed
+        liTiket.removeAll();
+        ElementBooked pointer = bookedList.first;
+        if (bookedList.first == null) {
+            System.out.println("LINKED LIST KOSONG");
+        } else {
+            while (pointer != null) {
+                liTiket.add(pointer.data.id + " " + pointer.data.nama + " " + pointer.data.jadwal + " " + pointer.data.kelas + " " + pointer.data.kursi);
+                pointer = pointer.next;
+            }
+        }
+    }//GEN-LAST:event_bPrintFirstActionPerformed
+
+    private void bPrintAtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintAtActionPerformed
+        fCari cariData= new fCari(liTiket, unbookedList, bookedList);
+        cariData.setResizable(false);
+        cariData.setVisible(true);
+    }//GEN-LAST:event_bPrintAtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,8 +154,7 @@ public class fCek extends javax.swing.JFrame {
     private javax.swing.JButton bPrintAt;
     private javax.swing.JButton bPrintFirst;
     private javax.swing.JButton bPrintLast;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lTitle;
-    private javax.swing.JList<String> liTiket;
+    private java.awt.List liTiket;
     // End of variables declaration//GEN-END:variables
 }
