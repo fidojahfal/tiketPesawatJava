@@ -82,7 +82,7 @@ public class fPesan extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(640, 480));
 
-        cbJadwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "09.00", "12.00", "15.00" }));
+        cbJadwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "9.00", "12.00", "15.00" }));
         cbJadwal.setName("cbJadwal"); // NOI18N
         cbJadwal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
