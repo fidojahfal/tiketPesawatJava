@@ -33,6 +33,7 @@ public class fPesanAt extends javax.swing.JFrame {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -146,16 +147,21 @@ public class fPesanAt extends javax.swing.JFrame {
         }
         ElementBooked pointer = bookedList.first;
         if (bookedList.first == null) {
-            System.out.println("LINKED LIST KOSONG");
+            javax.swing.JOptionPane.showMessageDialog(null, "List Masih Kosong!");
+            this.dispose();
         } else {
             while (pointer != null) {
                     if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
                         //liTiket.addItem("");
                         bookedList.insertAt(tbID.getText(), tbNama.getText(), id, tbNama1.getText(), (String)cbJadwal.getSelectedItem(), 
                                 (String)cbKursi.getSelectedItem(), (String)cbKelas.getSelectedItem());
+                        unbookedList.insertAt(id, tbNama1.getText(), (String)cbJadwal.getSelectedItem(), 
+                                (String)cbKursi.getSelectedItem(), (String)cbKelas.getSelectedItem());
                         tbNama1.setText("");
                         cbJadwal.setSelectedIndex(0);
                         cbKelas.setSelectedIndex(0);
+                        javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
+                        this.dispose();
                     }
                     pointer = pointer.next;
             }

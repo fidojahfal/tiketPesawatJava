@@ -48,6 +48,7 @@ public class fPesan extends javax.swing.JFrame {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         this.type = type;
+        //cuma nambahin comment
         initComponents();
 //        cbKelas.addItem("Ekonomi");
 //        cbKelas.addItem("Bisnis");
@@ -212,7 +213,7 @@ public class fPesan extends javax.swing.JFrame {
 
             unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
                     , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
-            
+            javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
             tbNama.setText("");
             cbJadwal.setSelectedIndex(0);
             cbKelas.setSelectedIndex(0);
@@ -226,7 +227,7 @@ public class fPesan extends javax.swing.JFrame {
 
             unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
                     , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
-            
+            javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
             tbNama.setText("");
             cbJadwal.setSelectedIndex(0);
             cbKelas.setSelectedIndex(0);
