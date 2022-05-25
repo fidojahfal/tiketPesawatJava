@@ -4,6 +4,9 @@
  */
 package uts.forms;
 
+import fPrint.fCek;
+import fDelete.fBatal;
+import fInsert.fPesan;
 import uts.*;
 /**
  *

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package uts.forms;
+package fInsert;
 
 import uts.*;
 import java.util.Random;
@@ -80,7 +80,6 @@ public class fPesan extends javax.swing.JFrame {
         bInsertFirst1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(640, 480));
 
         cbJadwal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "9.00", "12.00", "15.00" }));
         cbJadwal.setName("cbJadwal"); // NOI18N
