@@ -43,7 +43,7 @@ public class fPesan extends javax.swing.JFrame {
         return sb.toString();
     }
 
-    public fPesan(ListUnbooked unbookedList, ListBooked bookedList, int tipeInsert) {
+    public fPesan(ListUnbooked unbookedList, ListBooked bookedList) {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         initComponents();
@@ -135,6 +135,11 @@ public class fPesan extends javax.swing.JFrame {
         });
 
         bInsertFirst1.setText("InsertAt");
+        bInsertFirst1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bInsertFirst1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -333,6 +338,11 @@ public class fPesan extends javax.swing.JFrame {
         cbJadwal.setSelectedIndex(0);
         cbKelas.setSelectedIndex(0);
     }//GEN-LAST:event_bInsertFirstActionPerformed
+
+    private void bInsertFirst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInsertFirst1ActionPerformed
+        fPesanAt f = new fPesanAt(tbNama, cbJadwal, cbKelas, cbKursi, unbookedList, bookedList);
+        f.setVisible(true);
+    }//GEN-LAST:event_bInsertFirst1ActionPerformed
 
     /**
      * @param args the command line arguments

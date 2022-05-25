@@ -71,23 +71,23 @@ public class ListBooked {
         }*/
     }
     
-    public void insertAt(String tujuan, String id, String nama, String jadwal, String kursi, String kelas) {
+    public void insertAt(String tujuan, String tujuanNama, String id, String nama, String jadwal, String kursi, String kelas) {
         ElementBooked elemenBaru = new ElementBooked(id, nama, jadwal, kursi, kelas);
-        if (first.data.nama.equals(tujuan)) {
+        if (first.data.id.equals(tujuan) && first.data.nama.equals(tujuanNama)) {
             elemenBaru.next = first.next;
             elemenBaru.prev = first;
             if (first.next != null) {
                 first.next.prev = elemenBaru;
             }
             first.next = elemenBaru;
-        } else if (last.data.nama.equals(tujuan)) {
+        } else if (last.data.id.equals(tujuan) && first.data.nama.equals(tujuanNama)) {
             last.next = elemenBaru;
             elemenBaru.prev = last;
             last = elemenBaru;
         } else {
             ElementBooked pointer = first;
             while(pointer.next != null) {
-                if(pointer.data.nama.equals(tujuan)) {
+                if(pointer.data.id.equals(tujuan) && first.data.nama.equals(tujuanNama)) {
                     elemenBaru.next = pointer.next;
                     elemenBaru.prev = pointer;           
                     pointer.next.prev = elemenBaru;
