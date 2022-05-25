@@ -62,7 +62,7 @@ public class fPesanAt extends javax.swing.JFrame {
 
         jLabel1.setText("Masukkan ID");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Submit");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);

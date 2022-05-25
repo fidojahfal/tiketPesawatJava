@@ -18,6 +18,7 @@ public class fPesan extends javax.swing.JFrame {
      */
     ListUnbooked unbookedList;
     ListBooked bookedList;
+    int type;
 
     static String getAlphaNumericString(int n) {
 
@@ -43,9 +44,10 @@ public class fPesan extends javax.swing.JFrame {
         return sb.toString();
     }
 
-    public fPesan(ListUnbooked unbookedList, ListBooked bookedList) {
+    public fPesan(ListUnbooked unbookedList, ListBooked bookedList, int type) {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
+        this.type = type;
         initComponents();
 //        cbKelas.addItem("Ekonomi");
 //        cbKelas.addItem("Bisnis");
@@ -74,10 +76,6 @@ public class fPesan extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         cbKursi = new javax.swing.JComboBox<>();
-        lHarga = new javax.swing.JLabel();
-        lHarga2 = new javax.swing.JLabel();
-        bInsertFirst = new javax.swing.JButton();
-        bInsertFirst1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,24 +121,6 @@ public class fPesan extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(cbKursi);
 
-        lHarga.setText("Harga :");
-
-        lHarga2.setText("Rp,-");
-
-        bInsertFirst.setText("InsertFirst");
-        bInsertFirst.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bInsertFirstActionPerformed(evt);
-            }
-        });
-
-        bInsertFirst1.setText("InsertAt");
-        bInsertFirst1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bInsertFirst1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,21 +132,14 @@ public class fPesan extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bInsertFirst, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbJadwal, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane1)
-                            .addComponent(cbKelas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bInsertFirst1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(cbKelas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lHarga)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lHarga2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
@@ -183,9 +156,7 @@ public class fPesan extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(cbJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lHarga)
-                    .addComponent(lHarga2))
+                    .addComponent(cbJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -195,10 +166,7 @@ public class fPesan extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(bInsertFirst)
-                    .addComponent(bInsertFirst1))
+                .addComponent(jButton1)
                 .addContainerGap())
         );
 
@@ -238,14 +206,31 @@ public class fPesan extends javax.swing.JFrame {
         } else {
             id = id + getAlphaNumericString(4);
         }
-        bookedList.insertLast(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
-                (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
+        if (type == 1) {
+            bookedList.insertFirst(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
+                    (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
 
-        unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
-                , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
-        tbNama.setText("");
-        cbJadwal.setSelectedIndex(0);
-        cbKelas.setSelectedIndex(0);
+            unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
+                    , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
+            
+            tbNama.setText("");
+            cbJadwal.setSelectedIndex(0);
+            cbKelas.setSelectedIndex(0);
+        } else if (type == 2) {                                           
+            fPesanAt f = new fPesanAt(tbNama, cbJadwal, cbKelas, cbKursi, unbookedList, bookedList);
+            f.setVisible(true);
+        }
+        else {
+            bookedList.insertLast(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
+                    (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
+
+            unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
+                    , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
+            
+            tbNama.setText("");
+            cbJadwal.setSelectedIndex(0);
+            cbKelas.setSelectedIndex(0);
+        }
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -294,63 +279,11 @@ public class fPesan extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbKursiActionPerformed
 
-    private void bInsertFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInsertFirstActionPerformed
-        String id = null;
-        if (cbKelas.getSelectedItem() == "Ekonomi") {
-            id = "EK";
-        } else if (cbKelas.getSelectedItem() == "Bisnis") {
-            id = "BI";
-        } else if (cbKelas.getSelectedItem() == "First Class") {
-            id = "FC";
-        }
-        if (bookedList.first != null) {
-            boolean valid = false;
-            String idTemp;
-             do{
-                ElementBooked pointer = bookedList.first;
-                idTemp = id + getAlphaNumericString(4);
-                while (pointer != null) {
-                    if (pointer.data.id.equals(idTemp)) {
-                        //cbKursi.addItem(pointer.data.kursi);
-                        valid = true;
-                        id = idTemp;
-                        break;
-                    }
-                    if(pointer.next == null && !(pointer.data.id.equals(idTemp))){
-                        valid = false;
-                        break;
-                    }
-                    pointer = pointer.next;
-                }
-            }while (valid);
-             id = idTemp;
-        } else {
-            id = id + getAlphaNumericString(4);
-        }
-        bookedList.insertFirst(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
-                (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
-        String jadwal = cbJadwal.getSelectedItem().toString();
-        String kelas = cbKelas.getSelectedItem().toString();
-        String kursi = cbKursi.getSelectedItem().toString();
-
-        //unbookedList.deleteAt(jadwal, kursi, kelas);
-        tbNama.setText("");
-        cbJadwal.setSelectedIndex(0);
-        cbKelas.setSelectedIndex(0);
-    }//GEN-LAST:event_bInsertFirstActionPerformed
-
-    private void bInsertFirst1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bInsertFirst1ActionPerformed
-        fPesanAt f = new fPesanAt(tbNama, cbJadwal, cbKelas, cbKursi, unbookedList, bookedList);
-        f.setVisible(true);
-    }//GEN-LAST:event_bInsertFirst1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bInsertFirst;
-    private javax.swing.JButton bInsertFirst1;
     private javax.swing.JComboBox<String> cbJadwal;
     private javax.swing.JComboBox<String> cbKelas;
     private javax.swing.JComboBox<String> cbKursi;
@@ -360,8 +293,6 @@ public class fPesan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lHarga;
-    private javax.swing.JLabel lHarga2;
     private javax.swing.JTextField tbNama;
     // End of variables declaration//GEN-END:variables
 }

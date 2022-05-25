@@ -105,7 +105,7 @@ public class fMenu extends javax.swing.JFrame {
 
     private void bPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPesanActionPerformed
         // TODO add your handling code here:
-        fPesan order = new fPesan(unbookedList, bookedList);
+        fPesan order = new fPesan(unbookedList, bookedList, 2);
         order.setVisible(true);
         order.setResizable(false);
     }//GEN-LAST:event_bPesanActionPerformed
