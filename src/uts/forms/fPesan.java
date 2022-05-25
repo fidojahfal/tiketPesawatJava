@@ -43,7 +43,7 @@ public class fPesan extends javax.swing.JFrame {
         return sb.toString();
     }
 
-    public fPesan(ListUnbooked unbookedList, ListBooked bookedList) {
+    public fPesan(ListUnbooked unbookedList, ListBooked bookedList, int tipeInsert) {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         initComponents();
@@ -236,11 +236,9 @@ public class fPesan extends javax.swing.JFrame {
         }
         bookedList.insertLast(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
                 (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
-        String jadwal = cbJadwal.getSelectedItem().toString();
-        String kelas = cbKelas.getSelectedItem().toString();
-        String kursi = cbKursi.getSelectedItem().toString();
 
-        unbookedList.deleteAt(jadwal, kursi, kelas);
+        unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
+                , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
         tbNama.setText("");
         cbJadwal.setSelectedIndex(0);
         cbKelas.setSelectedIndex(0);
@@ -257,7 +255,7 @@ public class fPesan extends javax.swing.JFrame {
                 System.out.println("NANTI");
             } else {
                 while (pointer != null) {
-                    if (pointer.data.kelas.equals(cbKelas.getSelectedItem())
+                    if (pointer.data.id.equals("") && pointer.data.nama.equals("") && pointer.data.kelas.equals(cbKelas.getSelectedItem())
                             && pointer.data.jadwal.equals(cbJadwal.getSelectedItem())) {
                         cbKursi.addItem(pointer.data.kursi);
                     }
@@ -277,7 +275,7 @@ public class fPesan extends javax.swing.JFrame {
                 System.out.println("NANTI");
             } else {
                 while (pointer != null) {
-                    if (pointer.data.kelas.equals(cbKelas.getSelectedItem())
+                    if (pointer.data.id.equals("") && pointer.data.nama.equals("") && pointer.data.kelas.equals(cbKelas.getSelectedItem())
                             && pointer.data.jadwal.equals(cbJadwal.getSelectedItem())) {
                         cbKursi.addItem(pointer.data.kursi);
                     }
@@ -331,7 +329,7 @@ public class fPesan extends javax.swing.JFrame {
         String kelas = cbKelas.getSelectedItem().toString();
         String kursi = cbKursi.getSelectedItem().toString();
 
-        unbookedList.deleteAt(jadwal, kursi, kelas);
+        //unbookedList.deleteAt(jadwal, kursi, kelas);
         tbNama.setText("");
         cbJadwal.setSelectedIndex(0);
         cbKelas.setSelectedIndex(0);

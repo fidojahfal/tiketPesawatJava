@@ -135,7 +135,7 @@ public class fCek extends javax.swing.JFrame {
     private void bPrintLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintLastActionPerformed
         // TODO add your handling code here:
         liTiket.removeAll();
-        ElementBooked pointer = bookedList.last;
+        ElementUnbooked pointer = unbookedList.first;
         if (unbookedList.first == null) {
             liTiket.add("LINKED LIST KOSONG");
         } else {
@@ -149,7 +149,7 @@ public class fCek extends javax.swing.JFrame {
                 liTiket.add("Kursi : " + pointer.data.kelas);
                 liTiket.add("\nKelas : " + pointer.data.kursi);
 
-                pointer = pointer.prev;
+                pointer = pointer.next;
                 i++;
             }
             liTiket.add("--------- End List ---------");

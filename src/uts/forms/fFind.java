@@ -22,6 +22,7 @@ public class fFind extends javax.swing.JFrame {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -36,6 +37,8 @@ public class fFind extends javax.swing.JFrame {
         tbNama = new javax.swing.JTextField();
         bCari = new javax.swing.JButton();
         lCari = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        tbID = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,7 +49,15 @@ public class fFind extends javax.swing.JFrame {
             }
         });
 
-        lCari.setText("Masukkan Nama Pemesan");
+        lCari.setText("Masukkan Nama");
+
+        jLabel1.setText("Masukkan ID");
+
+        tbID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tbIDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -54,28 +65,33 @@ public class fFind extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tbNama)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(bCari))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lCari)))
-                .addContainerGap(164, Short.MAX_VALUE))
+                    .addComponent(lCari)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tbID, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tbNama, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bCari)
+                .addGap(16, 16, 16))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(lCari)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tbNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tbID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lCari)
+                    .addComponent(tbNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bCari)
-                .addContainerGap())
+                .addGap(31, 31, 31))
         );
 
         pack();
@@ -88,7 +104,7 @@ public class fFind extends javax.swing.JFrame {
             System.out.println("LINKED LIST KOSONG");
         } else {
             while (pointer != null) {
-                    if (pointer.data.nama.equals(tbNama.getText())) {
+                    if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
                         //liTiket.addItem("");
                         liTiket.add(pointer.data.id + " " + pointer.data.nama + " " + pointer.data.jadwal + " " + pointer.data.kelas + " " + pointer.data.kursi);
                     }
@@ -96,6 +112,10 @@ public class fFind extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_bCariActionPerformed
+
+    private void tbIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,7 +155,9 @@ public class fFind extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bCari;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lCari;
+    private javax.swing.JTextField tbID;
     private javax.swing.JTextField tbNama;
     // End of variables declaration//GEN-END:variables
 }
