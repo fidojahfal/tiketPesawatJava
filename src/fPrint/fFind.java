@@ -5,6 +5,7 @@
 package fPrint;
 
 import uts.*;
+
 /**
  *
  * @author Admin
@@ -17,6 +18,7 @@ public class fFind extends javax.swing.JFrame {
     java.awt.List liTiket;
     ListUnbooked unbookedList;
     ListBooked bookedList;
+
     public fFind(java.awt.List liTiket, ListUnbooked unbookedList, ListBooked bookedList) {
         this.liTiket = liTiket;
         this.unbookedList = unbookedList;
@@ -103,16 +105,46 @@ public class fFind extends javax.swing.JFrame {
         if (bookedList.first == null) {
             System.out.println("LINKED LIST KOSONG");
         } else {
-            while (pointer != null) {
-                    if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
-                        //liTiket.addItem("");
-                        liTiket.add(pointer.data.id + " " + pointer.data.nama + " " + pointer.data.jadwal + " " + pointer.data.kelas + " " + pointer.data.kursi);
-                    }
-                    pointer = pointer.next;
+            int i = 1;
+            liTiket.add("------- Hasil Pencarian --------");
+            while (pointer != null && i <= 324) {
+                if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
+                    //liTiket.addItem("");
+                    liTiket.add("-------------" + i + "------------\n");
+                    addItem(pointer, i);
+                }
+                pointer = pointer.next;
             }
+            liTiket.add("--------- End List ---------");
         }
     }//GEN-LAST:event_bCariActionPerformed
 
+    private void addItem(ElementBooked pointer, int i) {
+        if (pointer.prev != null) {
+            liTiket.add("Id : " + pointer.prev.data.id);
+            liTiket.add("Nama : " + pointer.prev.data.nama);
+            liTiket.add("Jadwal : " + pointer.prev.data.jadwal);
+            liTiket.add("Kursi : " + pointer.prev.data.kelas);
+            liTiket.add("\nKelas : " + pointer.prev.data.kursi);
+            i++;
+        }
+        
+        liTiket.add("-------------" + i + "------------\n");
+        liTiket.add("Id : " + pointer.data.id);
+        liTiket.add("Nama : " + pointer.data.nama);
+        liTiket.add("Jadwal : " + pointer.data.jadwal);
+        liTiket.add("Kursi : " + pointer.data.kelas);
+        liTiket.add("\nKelas : " + pointer.data.kursi);
+        i++;
+        if (pointer.next != null) {
+            liTiket.add("-------------" + i + "------------\n");
+            liTiket.add("Id : " + pointer.next.data.id);
+            liTiket.add("Nama : " + pointer.next.data.nama);
+            liTiket.add("Jadwal : " + pointer.next.data.jadwal);
+            liTiket.add("Kursi : " + pointer.next.data.kelas);
+            liTiket.add("\nKelas : " + pointer.next.data.kursi);
+        }
+    }
     private void tbIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbIDActionPerformed

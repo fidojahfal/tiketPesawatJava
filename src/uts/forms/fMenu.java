@@ -5,7 +5,7 @@
 package uts.forms;
 
 import fPrint.fCek;
-import fDelete.fBatal;
+import fDelete.*;
 import fInsert.fPesan;
 import uts.*;
 /**
@@ -119,7 +119,7 @@ public class fMenu extends javax.swing.JFrame {
 
     private void bBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBatalActionPerformed
         // TODO add your handling code here:
-        fBatal cancel = new fBatal(unbookedList, bookedList);
+        fMenuBatal cancel = new fMenuBatal(unbookedList, bookedList);
         cancel.setVisible(true);
         cancel.setResizable(false);
     }//GEN-LAST:event_bBatalActionPerformed
