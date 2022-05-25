@@ -107,7 +107,7 @@ public class fCek extends javax.swing.JFrame {
         liTiket.removeAll();
         ElementBooked pointer = bookedList.first;
         if (bookedList.first == null) {
-            System.out.println("LINKED LIST KOSONG");
+            liTiket.add("LINKED LIST KOSONG");
         } else {
             liTiket.add("------- Hasil Pencarian --------");
             int i = 1;
@@ -127,7 +127,7 @@ public class fCek extends javax.swing.JFrame {
     }//GEN-LAST:event_bPrintFirstActionPerformed
 
     private void bPrintAtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintAtActionPerformed
-        fCari cariData = new fCari(liTiket, unbookedList, bookedList);
+        fFind cariData = new fFind(liTiket, unbookedList, bookedList);
         cariData.setResizable(false);
         cariData.setVisible(true);
     }//GEN-LAST:event_bPrintAtActionPerformed
@@ -137,7 +137,7 @@ public class fCek extends javax.swing.JFrame {
         liTiket.removeAll();
         ElementBooked pointer = bookedList.last;
         if (unbookedList.first == null) {
-            System.out.println("LINKED LIST KOSONG");
+            liTiket.add("LINKED LIST KOSONG");
         } else {
             liTiket.add("------- Hasil Pencarian --------");
             int i = 1;

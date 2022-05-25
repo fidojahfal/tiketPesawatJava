@@ -53,6 +53,11 @@ public class fBatal extends javax.swing.JFrame {
         });
 
         jCheckBox1.setText("jCheckBox1");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Masukkan Id Pemesanan");
 
@@ -112,6 +117,10 @@ public class fBatal extends javax.swing.JFrame {
         unbookedList.insertAt("", "", pointer.data.jadwal, pointer.data.kursi, pointer.data.kelas);
         bookedList.deleteAt(tbId.getText());
     }//GEN-LAST:event_bBatalActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
     /**
      * @param args the command line arguments
