@@ -136,7 +136,7 @@ public class fCek extends javax.swing.JFrame {
         // TODO add your handling code here:
         liTiket.removeAll();
         ElementBooked pointer = bookedList.last;
-        if (bookedList.first == null) {
+        if (unbookedList.first == null) {
             System.out.println("LINKED LIST KOSONG");
         } else {
             liTiket.add("------- Hasil Pencarian --------");

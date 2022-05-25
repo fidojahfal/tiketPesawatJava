@@ -50,20 +50,57 @@ public class ListUnbooked {
 
     public void insertAt(String id, String nama, String jadwal, String kursi, String kelas) {
         ElementUnbooked elemenBaru = new ElementUnbooked(id, nama, jadwal, kursi, kelas);
-
+        String tempJadwal, tempKelas;
+        String[] lJadwal = {"9.00", "12.00", "15.00"};
+        String[] lKelas = {"Ekonomi", "Bisnis", "First Class"};
         String value = kursi;
         String alphabet = value.replaceAll("[^A-C]", "");
         int number = Integer.parseInt(value.replaceAll("[^0-9]", "")) - 1;
         String tempKursi = alphabet + Integer.toString(number);
+        if (number == 0) {
+            int indexJadwal = 0;
+            int indexKelas = 0;
+            for (int i = 0; i < 3; i ++) {
+                if (jadwal.equals(lJadwal[i])) {
+                    indexJadwal = i;
+                }
+                if (kelas.equals(lKelas[i])) {
+                    indexKelas = i;
+                }
+            }
+            //if ((indexJadwal != 0) && (indexKelas != 0)) {
+            if (indexKelas == 0 && indexJadwal != 0) {
+                kelas = lKelas[2];
+                jadwal = lJadwal[indexJadwal - 1];
+                tempKursi = "C6";
+            } else if (indexKelas != 0) {
+                kelas = lKelas[indexKelas - 1];
+                switch (alphabet) {
+                    case "B":
+                        tempKursi = "A20";
+                        break;
+                    case "C":
+                        tempKursi = "B10";
+                        break;
+                            
+                }
+            } else if (indexKelas == 0 && indexJadwal == 0) {
+                System.out.println("InsertFirst");
+                elemenBaru.next = first;
+                first.prev = elemenBaru;
+                first = elemenBaru;
+                return;
+            }
+        }
         System.out.println(tempKursi);
 
         if (first == null) {
             first = elemenBaru;
-        } else if (number == 0) {
+        } /*else if (number == 0) { 
             elemenBaru.next = first;
             first.prev = elemenBaru;
             first = elemenBaru;
-        } else {
+        }*/ else {
             ElementUnbooked pointer = first;
             while (!(pointer.data.jadwal.equals(jadwal) && pointer.data.kelas.equals(kelas) && pointer.data.kursi.equals(tempKursi))) {
                 pointer = pointer.next;
