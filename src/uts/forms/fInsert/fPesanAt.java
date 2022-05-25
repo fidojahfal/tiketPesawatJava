@@ -2,25 +2,34 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package fPrint;
+package uts.forms.fInsert;
 
-import uts.*;
+import static uts.forms.fInsert.fPesan.getAlphaNumericString;
+import uts.ElementBooked;
+import uts.ListBooked;
+import uts.ListUnbooked;
 
 /**
  *
  * @author Admin
  */
-public class fFind extends javax.swing.JFrame {
+public class fPesanAt extends javax.swing.JFrame {
 
     /**
-     * Creates new form jCheck
+     * Creates new form fPesanAt
      */
-    java.awt.List liTiket;
+    javax.swing.JComboBox<String> cbJadwal;
+    javax.swing.JComboBox<String> cbKelas; 
+    javax.swing.JComboBox<String> cbKursi;
+    javax.swing.JTextField tbNama1;
     ListUnbooked unbookedList;
     ListBooked bookedList;
-
-    public fFind(java.awt.List liTiket, ListUnbooked unbookedList, ListBooked bookedList) {
-        this.liTiket = liTiket;
+    public fPesanAt(javax.swing.JTextField tbNama1, javax.swing.JComboBox<String> cbJadwal, javax.swing.JComboBox<String> cbKelas, 
+            javax.swing.JComboBox<String> cbKursi, ListUnbooked unbookedList, ListBooked bookedList) {
+        this.tbNama1 = tbNama1;
+        this.cbJadwal = cbJadwal;
+        this.cbKelas = cbKelas;
+        this.cbKursi = cbKursi;
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         initComponents();
@@ -36,24 +45,15 @@ public class fFind extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tbNama = new javax.swing.JTextField();
-        bCari = new javax.swing.JButton();
         lCari = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        tbNama = new javax.swing.JTextField();
         tbID = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        bCari.setText("Cari");
-        bCari.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bCariActionPerformed(evt);
-            }
-        });
-
         lCari.setText("Masukkan Nama");
-
-        jLabel1.setText("Masukkan ID");
 
         tbID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,11 +61,20 @@ public class fFind extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Masukkan ID");
+
+        jButton1.setText("Submit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lCari)
@@ -77,77 +86,87 @@ public class fFind extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bCari)
-                .addGap(16, 16, 16))
+                .addComponent(jButton1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tbID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lCari)
                     .addComponent(tbNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(bCari)
-                .addGap(31, 31, 31))
+                .addComponent(jButton1)
+                .addGap(60, 60, 60))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCariActionPerformed
-        liTiket.removeAll();
-        ElementBooked pointer = bookedList.first;
-        if (bookedList.first == null) {
-            System.out.println("LINKED LIST KOSONG");
-        } else {
-            int i = 1;
-            liTiket.add("------- Hasil Pencarian --------");
-            while (pointer != null && i <= 324) {
-                if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
-                    //liTiket.addItem("");
-                    liTiket.add("-------------" + i + "------------\n");
-                    addItem(pointer, i);
-                }
-                pointer = pointer.next;
-            }
-            liTiket.add("--------- End List ---------");
-        }
-    }//GEN-LAST:event_bCariActionPerformed
-
-    private void addItem(ElementBooked pointer, int i) {
-        if (pointer.prev != null) {
-            liTiket.add("Id : " + pointer.prev.data.id);
-            liTiket.add("Nama : " + pointer.prev.data.nama);
-            liTiket.add("Jadwal : " + pointer.prev.data.jadwal);
-            liTiket.add("Kursi : " + pointer.prev.data.kelas);
-            liTiket.add("\nKelas : " + pointer.prev.data.kursi);
-            i++;
-        }
-        
-        liTiket.add("-------------" + i + "------------\n");
-        liTiket.add("Id : " + pointer.data.id);
-        liTiket.add("Nama : " + pointer.data.nama);
-        liTiket.add("Jadwal : " + pointer.data.jadwal);
-        liTiket.add("Kursi : " + pointer.data.kelas);
-        liTiket.add("\nKelas : " + pointer.data.kursi);
-        i++;
-        if (pointer.next != null) {
-            liTiket.add("-------------" + i + "------------\n");
-            liTiket.add("Id : " + pointer.next.data.id);
-            liTiket.add("Nama : " + pointer.next.data.nama);
-            liTiket.add("Jadwal : " + pointer.next.data.jadwal);
-            liTiket.add("Kursi : " + pointer.next.data.kelas);
-            liTiket.add("\nKelas : " + pointer.next.data.kursi);
-        }
-    }
     private void tbIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tbIDActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String id = null;
+        if (cbKelas.getSelectedItem() == "Ekonomi") {
+            id = "EK";
+        } else if (cbKelas.getSelectedItem() == "Bisnis") {
+            id = "BI";
+        } else if (cbKelas.getSelectedItem() == "First Class") {
+            id = "FC";
+        }
+        if (bookedList.first != null) {
+            boolean valid = false;
+            String idTemp;
+             do{
+                ElementBooked pointer = bookedList.first;
+                idTemp = id + getAlphaNumericString(4);
+                while (pointer != null) {
+                    if (pointer.data.id.equals(idTemp)) {
+                        //cbKursi.addItem(pointer.data.kursi);
+                        valid = true;
+                        id = idTemp;
+                        break;
+                    }
+                    if(pointer.next == null && !(pointer.data.id.equals(idTemp))){
+                        valid = false;
+                        break;
+                    }
+                    pointer = pointer.next;
+                }
+            }while (valid);
+             id = idTemp;
+        } else {
+            id = id + getAlphaNumericString(4);
+        }
+        ElementBooked pointer = bookedList.first;
+        if (bookedList.first == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "List Masih Kosong!");
+            this.dispose();
+        } else {
+            while (pointer != null) {
+                    if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
+                        //liTiket.addItem("");
+                        bookedList.insertAt(tbID.getText(), tbNama.getText(), id, tbNama1.getText(), (String)cbJadwal.getSelectedItem(), 
+                                (String)cbKursi.getSelectedItem(), (String)cbKelas.getSelectedItem());
+                        unbookedList.insertAt(id, tbNama1.getText(), (String)cbJadwal.getSelectedItem(), 
+                                (String)cbKursi.getSelectedItem(), (String)cbKelas.getSelectedItem());
+                        tbNama1.setText("");
+                        cbJadwal.setSelectedIndex(0);
+                        cbKelas.setSelectedIndex(0);
+                        javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
+                        this.dispose();
+                    }
+                    pointer = pointer.next;
+            }
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,27 +185,26 @@ public class fFind extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(fFind.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(fPesanAt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(fFind.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(fPesanAt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(fFind.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(fPesanAt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(fFind.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(fPesanAt.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
-//        //</editor-fold>
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new fFind().setVisible(true);
+//                new fPesanAt().setVisible(true);
 //            }
 //        });
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bCari;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lCari;
     private javax.swing.JTextField tbID;
