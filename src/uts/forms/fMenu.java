@@ -5,7 +5,7 @@
 package uts.forms;
 
 import uts.forms.fDelete.fMenuBatal;
-import uts.forms.fPrint.fCek;
+import uts.forms.fPrint.fMenuPrint;
 import uts.forms.fInsert.*;
 import uts.*;
 /**
@@ -113,7 +113,7 @@ public class fMenu extends javax.swing.JFrame {
 
     private void bPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintActionPerformed
         // TODO add your handling code here:
-        fCek form = new fCek(unbookedList, bookedList);
+        fMenuPrint form = new fMenuPrint(unbookedList, bookedList);
         form.setVisible(true);
         form.setResizable(false);
     }//GEN-LAST:event_bPrintActionPerformed

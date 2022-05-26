@@ -110,7 +110,7 @@ public class fBatal extends javax.swing.JFrame {
 
     private void bBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBatalActionPerformed
         // TODO add your handling code here:
-        if (cPernyataan.isSelected()) {
+        /*if (cPernyataan.isSelected()) {
             if (bookedList.first != null) {
                 ElementBooked pointer = bookedList.first;
                 while (!(pointer.data.id.equals(tbId.getText()) && pointer.data.nama.equals(tbNama.getText()))) {
@@ -124,8 +124,22 @@ public class fBatal extends javax.swing.JFrame {
             }
         }else{
             javax.swing.JOptionPane.showMessageDialog(null, "Mohon centang pada pernyataan data!");
+        }*/
+        if (tbId.getText().equals("") || tbNama.getText().equals("")) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Harap masukkan data id dan nama terlebih dahulu!");
+        } else if (!cPernyataan.isSelected()) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Mohon centang pada pernyataan data!");
+        } else if (bookedList.first == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
+        } else {
+            ElementBooked pointer = bookedList.first;
+            while (!(pointer.data.id.equals(tbId.getText()) && pointer.data.nama.equals(tbNama.getText()))) {
+                pointer = pointer.next;
+            }
+            unbookedList.insertAt("", "", pointer.data.jadwal, pointer.data.kursi, pointer.data.kelas);
+            bookedList.deleteAt(tbId.getText());
+            javax.swing.JOptionPane.showMessageDialog(null, "Tiket dengan ID " + tbId.getText() + " dan nama" + tbNama.getText() + "berhasil dibatalkan");
         }
-
     }//GEN-LAST:event_bBatalActionPerformed
 
     private void cPernyataanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cPernyataanActionPerformed

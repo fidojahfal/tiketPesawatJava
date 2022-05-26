@@ -101,22 +101,28 @@ public class fFind extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCariActionPerformed
-        liTiket.removeAll();
-        ElementBooked pointer = bookedList.first;
-        if (bookedList.first == null) {
-            
+        if (tbID.getText().equals("") || tbNama.getText().equals("")) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Harap masukkan data id dan nama terlebih dahulu!");
+        } else if (bookedList.first == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
         } else {
-            int i = 1;
-            liTiket.add("------- Hasil Pencarian --------");
-            while (pointer != null && i <= 324) {
-                if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
-                    //liTiket.addItem("");
-                    liTiket.add("-------------" + i + "------------\n");
-                    addItem(pointer, i);
+            liTiket.removeAll();
+            ElementBooked pointer = bookedList.first;
+            if (bookedList.first == null) {
+
+            } else {
+                int i = 1;
+                liTiket.add("------- Hasil Pencarian --------");
+                while (pointer != null && i <= 324) {
+                    if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
+                        //liTiket.addItem("");
+                        liTiket.add("-------------" + i + "------------\n");
+                        addItem(pointer, i);
+                    }
+                    pointer = pointer.next;
                 }
-                pointer = pointer.next;
+                liTiket.add("--------- End List ---------");
             }
-            liTiket.add("--------- End List ---------");
         }
     }//GEN-LAST:event_bCariActionPerformed
 

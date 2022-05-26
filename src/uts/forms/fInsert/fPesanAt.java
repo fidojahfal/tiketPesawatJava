@@ -103,7 +103,7 @@ public class fPesanAt extends javax.swing.JFrame {
                     .addComponent(tbNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addGap(60, 60, 60))
+                .addContainerGap())
         );
 
         pack();
@@ -114,57 +114,61 @@ public class fPesanAt extends javax.swing.JFrame {
     }//GEN-LAST:event_tbIDActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String id = null;
-        if (cbKelas.getSelectedItem() == "Ekonomi") {
-            id = "EK";
-        } else if (cbKelas.getSelectedItem() == "Bisnis") {
-            id = "BI";
-        } else if (cbKelas.getSelectedItem() == "First Class") {
-            id = "FC";
-        }
-        if (bookedList.first != null) {
-            boolean valid = false;
-            String idTemp;
-             do{
-                ElementBooked pointer = bookedList.first;
-                idTemp = id + getAlphaNumericString(4);
+        if (tbID.getText().equals("") || tbNama.getText().equals("")) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Harap masukkan data id dan nama terlebih dahulu!");
+        } else {
+            String id = null;
+            if (cbKelas.getSelectedItem() == "Ekonomi") {
+                id = "EK";
+            } else if (cbKelas.getSelectedItem() == "Bisnis") {
+                id = "BI";
+            } else if (cbKelas.getSelectedItem() == "First Class") {
+                id = "FC";
+            }
+            if (bookedList.first != null) {
+                boolean valid = false;
+                String idTemp;
+                 do{
+                    ElementBooked pointer = bookedList.first;
+                    idTemp = id + getAlphaNumericString(4);
+                    while (pointer != null) {
+                        if (pointer.data.id.equals(idTemp)) {
+                            //cbKursi.addItem(pointer.data.kursi);
+                            valid = true;
+                            id = idTemp;
+                            break;
+                        }
+                        if(pointer.next == null && !(pointer.data.id.equals(idTemp))){
+                            valid = false;
+                            break;
+                        }
+                        pointer = pointer.next;
+                    }
+                }while (valid);
+                 id = idTemp;
+            } else {
+                id = id + getAlphaNumericString(4);
+            }
+            ElementBooked pointer = bookedList.first;
+            if (bookedList.first == null) {
+                javax.swing.JOptionPane.showMessageDialog(null, "List Masih Kosong!");
+                this.dispose();
+            } else {
                 while (pointer != null) {
-                    if (pointer.data.id.equals(idTemp)) {
-                        //cbKursi.addItem(pointer.data.kursi);
-                        valid = true;
-                        id = idTemp;
-                        break;
-                    }
-                    if(pointer.next == null && !(pointer.data.id.equals(idTemp))){
-                        valid = false;
-                        break;
-                    }
-                    pointer = pointer.next;
+                        if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
+                            //liTiket.addItem("");
+                            bookedList.insertAt(tbID.getText(), tbNama.getText(), id, tbNama1.getText(), (String)cbJadwal.getSelectedItem(), 
+                                    (String)cbKursi.getSelectedItem(), (String)cbKelas.getSelectedItem());
+                            unbookedList.insertAt(id, tbNama1.getText(), (String)cbJadwal.getSelectedItem(), 
+                                    (String)cbKursi.getSelectedItem(), (String)cbKelas.getSelectedItem());
+                            tbNama1.setText("");
+                            cbJadwal.setSelectedIndex(0);
+                            cbKelas.setSelectedIndex(0);
+                            javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
+                            this.dispose();
+                        }
+                        pointer = pointer.next;
                 }
-            }while (valid);
-             id = idTemp;
-        } else {
-            id = id + getAlphaNumericString(4);
-        }
-        ElementBooked pointer = bookedList.first;
-        if (bookedList.first == null) {
-            javax.swing.JOptionPane.showMessageDialog(null, "List Masih Kosong!");
-            this.dispose();
-        } else {
-            while (pointer != null) {
-                    if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
-                        //liTiket.addItem("");
-                        bookedList.insertAt(tbID.getText(), tbNama.getText(), id, tbNama1.getText(), (String)cbJadwal.getSelectedItem(), 
-                                (String)cbKursi.getSelectedItem(), (String)cbKelas.getSelectedItem());
-                        unbookedList.insertAt(id, tbNama1.getText(), (String)cbJadwal.getSelectedItem(), 
-                                (String)cbKursi.getSelectedItem(), (String)cbKelas.getSelectedItem());
-                        tbNama1.setText("");
-                        cbJadwal.setSelectedIndex(0);
-                        cbKelas.setSelectedIndex(0);
-                        javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
-                        this.dispose();
-                    }
-                    pointer = pointer.next;
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

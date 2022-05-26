@@ -101,9 +101,13 @@ public class fMenuBatal extends javax.swing.JFrame {
 
     private void bDeleteAtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDeleteAtActionPerformed
         // TODO add your handling code here:
-        fBatal f = new fBatal(unbookedList, bookedList);
-        f.setVisible(true);
-        f.setResizable(false);
+        if (bookedList.first == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
+        } else {
+            fBatal f = new fBatal(unbookedList, bookedList);
+            f.setVisible(true);
+            f.setResizable(false);
+        }
     }//GEN-LAST:event_bDeleteAtActionPerformed
 
     private void bDeleteFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDeleteFirstActionPerformed

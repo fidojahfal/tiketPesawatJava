@@ -10,15 +10,15 @@ import uts.*;
  *
  * @author Admin
  */
-public class fCek extends javax.swing.JFrame {
+public class fMenuPrint extends javax.swing.JFrame {
 
     /**
-     * Creates new form fCek
+     * Creates new form fMenuPrint
      */
     ListUnbooked unbookedList;
     ListBooked bookedList;
 
-    public fCek(ListUnbooked unbookedList, ListBooked bookedList) {
+    public fMenuPrint(ListUnbooked unbookedList, ListBooked bookedList) {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         initComponents();
@@ -128,7 +128,7 @@ public class fCek extends javax.swing.JFrame {
     }//GEN-LAST:event_bPrintFirstActionPerformed
 
     private void bPrintAtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintAtActionPerformed
-        if (unbookedList.first == null) {
+        if (bookedList.first == null) {
             javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
         } else {
             fFind cariData = new fFind(liTiket, unbookedList, bookedList);
@@ -140,8 +140,8 @@ public class fCek extends javax.swing.JFrame {
     private void bPrintLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintLastActionPerformed
         // TODO add your handling code here:
         liTiket.removeAll();
-        ElementUnbooked pointer = unbookedList.first;
-        if (unbookedList.first == null) {
+        ElementBooked pointer = bookedList.last;
+        if (bookedList.first == null) {
             javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
         } else {
             liTiket.add("------- Hasil Pencarian --------");
@@ -178,20 +178,20 @@ public class fCek extends javax.swing.JFrame {
 //                }
 //            }
 //        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(fCek.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(fMenuPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(fCek.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(fMenuPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(fCek.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(fMenuPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(fCek.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//            java.util.logging.Logger.getLogger(fMenuPrint.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 //        }
 //        //</editor-fold>
 //
 //        /* Create and display the form */
 //        java.awt.EventQueue.invokeLater(new Runnable() {
 //            public void run() {
-//                new fCek().setVisible(true);
+//                new fMenuPrint().setVisible(true);
 //            }
 //        });
 //    }
