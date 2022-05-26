@@ -16,8 +16,12 @@ public class fMenuPesan extends javax.swing.JFrame {
     /**
      * Creates new form fMenuPesan
      */
-    public fMenuPesan() {
+    public fMenuPesan(ListUnbooked unbookedList, ListBooked bookedList) {
+        this.unbookedList = unbookedList;
+        this.bookedList = bookedList;
         initComponents();
+        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

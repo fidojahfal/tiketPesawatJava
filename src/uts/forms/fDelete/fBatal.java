@@ -25,6 +25,8 @@ public class fBatal extends javax.swing.JFrame {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         initComponents();
+        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -110,12 +112,17 @@ public class fBatal extends javax.swing.JFrame {
 
     private void bBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBatalActionPerformed
         // TODO add your handling code here:
-        ElementBooked pointer = bookedList.first;
-        while(!(pointer.data.id.equals(tbId.getText()) && pointer.data.nama.equals(tbNama.getText()))){
-            pointer = pointer.next;
+        if (bookedList.first != null) {
+            ElementBooked pointer = bookedList.first;
+            while(!(pointer.data.id.equals(tbId.getText()) && pointer.data.nama.equals(tbNama.getText()))){
+                pointer = pointer.next;
+            }
+            unbookedList.insertAt("", "", pointer.data.jadwal, pointer.data.kursi, pointer.data.kelas);
+            bookedList.deleteAt(tbId.getText());
+            javax.swing.JOptionPane.showMessageDialog(null, "Tiker dengan ID " + tbId + " dan nama" + tbNama.getText() + "berhasil dibatalkan");
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
         }
-        unbookedList.insertAt("", "", pointer.data.jadwal, pointer.data.kursi, pointer.data.kelas);
-        bookedList.deleteAt(tbId.getText());
     }//GEN-LAST:event_bBatalActionPerformed
 
     private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed

@@ -87,7 +87,7 @@ public class fOrder extends Frame implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == bOrder) {
-            fPrint submit = new fPrint(unbookedList, bookedList);
+            fPrinta submit = new fPrinta(unbookedList, bookedList);
             submit.setVisible(true);
             lHarga.setText("Harga Rp100.000,-");
         }

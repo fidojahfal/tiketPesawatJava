@@ -14,12 +14,12 @@ import uts.ListUnbooked;
  *
  * @author Kyroline
  */
-public class fPrint extends Frame implements ActionListener {
+public class fPrinta extends Frame implements ActionListener {
     List liData;
     Button bPrintFirst, bPrintAt, bPrintLast;
     ListUnbooked listUnbooked;
     ListBooked listBooked;
-    public fPrint (ListUnbooked listUnbooked, ListBooked listBooked) {
+    public fPrinta (ListUnbooked listUnbooked, ListBooked listBooked) {
         this.listUnbooked = listUnbooked;
         this.listBooked = listBooked;
         this.setResizable(false);
@@ -74,7 +74,7 @@ public class fPrint extends Frame implements ActionListener {
     }
     
     /*public static void main(String[] args) {
-        fPrint f = new fPrint();
+        fPrinta f = new fPrinta();
         f.setVisible(true);
         
     }*/

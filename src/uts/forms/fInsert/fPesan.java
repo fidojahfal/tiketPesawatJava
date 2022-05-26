@@ -50,12 +50,8 @@ public class fPesan extends javax.swing.JFrame {
         this.type = type;
         //cuma nambahin comment
         initComponents();
-//        cbKelas.addItem("Ekonomi");
-//        cbKelas.addItem("Bisnis");
-//        cbKelas.addItem("First Class");
-//        cbJadwal.addItem("09.00");
-//        cbJadwal.addItem("12.00");
-//        cbJadwal.addItem("15.00");
+        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -175,64 +171,69 @@ public class fPesan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String id = null;
-        if (cbKelas.getSelectedItem() == "Ekonomi") {
-            id = "EK";
-        } else if (cbKelas.getSelectedItem() == "Bisnis") {
-            id = "BI";
-        } else if (cbKelas.getSelectedItem() == "First Class") {
-            id = "FC";
-        }
-        if (bookedList.first != null) {
-            boolean valid = false;
-            String idTemp;
-             do{
-                ElementBooked pointer = bookedList.first;
-                idTemp = id + getAlphaNumericString(4);
-                while (pointer != null) {
-                    if (pointer.data.id.equals(idTemp)) {
-                        //cbKursi.addItem(pointer.data.kursi);
-                        valid = true;
-                        id = idTemp;
-                        break;
-                    }
-                    if(pointer.next == null && !(pointer.data.id.equals(idTemp))){
-                        valid = false;
-                        break;
-                    }
-                    pointer = pointer.next;
-                }
-            }while (valid);
-             id = idTemp;
+        if (cbKelas.getSelectedIndex() == 0) {
+            
+        } else if (cbJadwal.getSelectedIndex() == 0) {
+            
         } else {
-            id = id + getAlphaNumericString(4);
-        }
-        if (type == 1) {
-            bookedList.insertFirst(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
-                    (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
+            String id = null;
+            if (cbKelas.getSelectedItem() == "Ekonomi") {
+                id = "EK";
+            } else if (cbKelas.getSelectedItem() == "Bisnis") {
+                id = "BI";
+            } else if (cbKelas.getSelectedItem() == "First Class") {
+                id = "FC";
+            }
+            if (bookedList.first != null) {
+                boolean valid = false;
+                String idTemp;
+                 do{
+                    ElementBooked pointer = bookedList.first;
+                    idTemp = id + getAlphaNumericString(4);
+                    while (pointer != null) {
+                        if (pointer.data.id.equals(idTemp)) {
+                            //cbKursi.addItem(pointer.data.kursi);
+                            valid = true;
+                            id = idTemp;
+                            break;
+                        }
+                        if(pointer.next == null && !(pointer.data.id.equals(idTemp))){
+                            valid = false;
+                            break;
+                        }
+                        pointer = pointer.next;
+                    }
+                }while (valid);
+                 id = idTemp;
+            } else {
+                id = id + getAlphaNumericString(4);
+            }
+            if (type == 1) {
+                bookedList.insertFirst(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
+                        (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
 
-            unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
-                    , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
-            javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
-            tbNama.setText("");
-            cbJadwal.setSelectedIndex(0);
-            cbKelas.setSelectedIndex(0);
-        } else if (type == 2) {                                           
-            fPesanAt f = new fPesanAt(tbNama, cbJadwal, cbKelas, cbKursi, unbookedList, bookedList);
-            f.setVisible(true);
-        }
-        else {
-            bookedList.insertLast(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
-                    (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
+                unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
+                        , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
+                javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
+                tbNama.setText("");
+                cbJadwal.setSelectedIndex(0);
+                cbKelas.setSelectedIndex(0);
+            } else if (type == 2) {                                           
+                fPesanAt f = new fPesanAt(tbNama, cbJadwal, cbKelas, cbKursi, unbookedList, bookedList);
+                f.setVisible(true);
+            }
+            else {
+                bookedList.insertLast(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
+                        (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
 
-            unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
-                    , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
-            javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
-            tbNama.setText("");
-            cbJadwal.setSelectedIndex(0);
-            cbKelas.setSelectedIndex(0);
+                unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
+                        , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
+                javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
+                tbNama.setText("");
+                cbJadwal.setSelectedIndex(0);
+                cbKelas.setSelectedIndex(0);
+            }
         }
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cbJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbJadwalActionPerformed

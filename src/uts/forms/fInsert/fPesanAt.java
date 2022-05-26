@@ -33,6 +33,7 @@ public class fPesanAt extends javax.swing.JFrame {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         initComponents();
+        setResizable(false);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 

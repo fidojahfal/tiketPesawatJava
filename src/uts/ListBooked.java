@@ -80,14 +80,14 @@ public class ListBooked {
                 first.next.prev = elemenBaru;
             }
             first.next = elemenBaru;
-        } else if (last.data.id.equals(tujuan) && first.data.nama.equals(tujuanNama)) {
+        } else if (last.data.id.equals(tujuan) && last.data.nama.equals(tujuanNama)) {
             last.next = elemenBaru;
             elemenBaru.prev = last;
             last = elemenBaru;
         } else {
             ElementBooked pointer = first;
             while(pointer.next != null) {
-                if(pointer.data.id.equals(tujuan) && first.data.nama.equals(tujuanNama)) {
+                if(pointer.data.id.equals(tujuan) && pointer.data.nama.equals(tujuanNama)) {
                     elemenBaru.next = pointer.next;
                     elemenBaru.prev = pointer;           
                     pointer.next.prev = elemenBaru;

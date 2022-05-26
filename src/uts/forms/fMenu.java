@@ -6,7 +6,7 @@ package uts.forms;
 
 import uts.forms.fDelete.fMenuBatal;
 import uts.forms.fPrint.fCek;
-import uts.forms.fInsert.fPesan;
+import uts.forms.fInsert.*;
 import uts.*;
 /**
  *
@@ -24,6 +24,7 @@ public class fMenu extends javax.swing.JFrame {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         initComponents();
+        setResizable(false);
     }
 
     /**
@@ -105,7 +106,7 @@ public class fMenu extends javax.swing.JFrame {
 
     private void bPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPesanActionPerformed
         // TODO add your handling code here:
-        fPesan order = new fPesan(unbookedList, bookedList, 2);
+        fMenuPesan order = new fMenuPesan(unbookedList, bookedList);
         order.setVisible(true);
         order.setResizable(false);
     }//GEN-LAST:event_bPesanActionPerformed

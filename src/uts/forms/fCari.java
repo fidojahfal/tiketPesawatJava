@@ -22,7 +22,9 @@ public class fCari extends javax.swing.JFrame {
         this.liTiket = liTiket;
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
+        setResizable(false);
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**

@@ -24,6 +24,7 @@ public class fFind extends javax.swing.JFrame {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         initComponents();
+        setResizable(false);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
@@ -103,7 +104,7 @@ public class fFind extends javax.swing.JFrame {
         liTiket.removeAll();
         ElementBooked pointer = bookedList.first;
         if (bookedList.first == null) {
-            System.out.println("LINKED LIST KOSONG");
+            
         } else {
             int i = 1;
             liTiket.add("------- Hasil Pencarian --------");

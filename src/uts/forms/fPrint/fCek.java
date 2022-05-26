@@ -22,7 +22,8 @@ public class fCek extends javax.swing.JFrame {
         this.unbookedList = unbookedList;
         this.bookedList = bookedList;
         initComponents();
-        this.setResizable(false);
+        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -107,7 +108,7 @@ public class fCek extends javax.swing.JFrame {
         liTiket.removeAll();
         ElementBooked pointer = bookedList.first;
         if (bookedList.first == null) {
-            liTiket.add("LINKED LIST KOSONG");
+            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
         } else {
             liTiket.add("------- Hasil Pencarian --------");
             int i = 1;
@@ -127,9 +128,13 @@ public class fCek extends javax.swing.JFrame {
     }//GEN-LAST:event_bPrintFirstActionPerformed
 
     private void bPrintAtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintAtActionPerformed
-        fFind cariData = new fFind(liTiket, unbookedList, bookedList);
-        cariData.setResizable(false);
-        cariData.setVisible(true);
+        if (unbookedList.first == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
+        } else {
+            fFind cariData = new fFind(liTiket, unbookedList, bookedList);
+            cariData.setResizable(false);
+            cariData.setVisible(true);
+        }
     }//GEN-LAST:event_bPrintAtActionPerformed
 
     private void bPrintLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bPrintLastActionPerformed
@@ -137,7 +142,7 @@ public class fCek extends javax.swing.JFrame {
         liTiket.removeAll();
         ElementUnbooked pointer = unbookedList.first;
         if (unbookedList.first == null) {
-            liTiket.add("LINKED LIST KOSONG");
+            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
         } else {
             liTiket.add("------- Hasil Pencarian --------");
             int i = 1;
