@@ -40,7 +40,7 @@ public class fBatal extends javax.swing.JFrame {
 
         tbId = new javax.swing.JTextField();
         bBatal = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        cPernyataan = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         tbNama = new javax.swing.JTextField();
@@ -54,10 +54,10 @@ public class fBatal extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox1.setText("jCheckBox1");
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        cPernyataan.setText("Saya menyatakan, data yang saya isikan sudah benar.");
+        cPernyataan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                cPernyataanActionPerformed(evt);
             }
         });
 
@@ -70,24 +70,22 @@ public class fBatal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cPernyataan)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(jCheckBox1))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(tbId, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(bBatal)
-                            .addComponent(tbNama, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 32, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tbId, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(bBatal)
+                                .addComponent(tbNama, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,11 +98,11 @@ public class fBatal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tbNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cPernyataan)
+                .addGap(18, 18, 18)
                 .addComponent(bBatal)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -112,22 +110,27 @@ public class fBatal extends javax.swing.JFrame {
 
     private void bBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBatalActionPerformed
         // TODO add your handling code here:
-        if (bookedList.first != null) {
-            ElementBooked pointer = bookedList.first;
-            while(!(pointer.data.id.equals(tbId.getText()) && pointer.data.nama.equals(tbNama.getText()))){
-                pointer = pointer.next;
+        if (cPernyataan.isSelected()) {
+            if (bookedList.first != null) {
+                ElementBooked pointer = bookedList.first;
+                while (!(pointer.data.id.equals(tbId.getText()) && pointer.data.nama.equals(tbNama.getText()))) {
+                    pointer = pointer.next;
+                }
+                unbookedList.insertAt("", "", pointer.data.jadwal, pointer.data.kursi, pointer.data.kelas);
+                bookedList.deleteAt(tbId.getText());
+                javax.swing.JOptionPane.showMessageDialog(null, "Tiker dengan ID " + tbId.getText() + " dan nama" + tbNama.getText() + "berhasil dibatalkan");
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
             }
-            unbookedList.insertAt("", "", pointer.data.jadwal, pointer.data.kursi, pointer.data.kelas);
-            bookedList.deleteAt(tbId.getText());
-            javax.swing.JOptionPane.showMessageDialog(null, "Tiker dengan ID " + tbId + " dan nama" + tbNama.getText() + "berhasil dibatalkan");
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(null, "Mohon centang pada pernyataan data!");
         }
+
     }//GEN-LAST:event_bBatalActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void cPernyataanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cPernyataanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_cPernyataanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -166,7 +169,7 @@ public class fBatal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bBatal;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox cPernyataan;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField tbId;
