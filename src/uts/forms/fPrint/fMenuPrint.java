@@ -117,8 +117,8 @@ public class fMenuPrint extends javax.swing.JFrame {
                 liTiket.add("Id : " + pointer.data.id);
                 liTiket.add("Nama : " + pointer.data.nama);
                 liTiket.add("Jadwal : " + pointer.data.jadwal);
-                liTiket.add("Kursi : " + pointer.data.kelas);
-                liTiket.add("\nKelas : " + pointer.data.kursi);
+                liTiket.add("Kelas : " + pointer.data.kelas);
+                liTiket.add("\nKursi : " + pointer.data.kursi);
 
                 pointer = pointer.next;
                 i++;
@@ -151,8 +151,8 @@ public class fMenuPrint extends javax.swing.JFrame {
                 liTiket.add("Id : " + pointer.data.id);
                 liTiket.add("Nama : " + pointer.data.nama);
                 liTiket.add("Jadwal : " + pointer.data.jadwal);
-                liTiket.add("Kursi : " + pointer.data.kelas);
-                liTiket.add("\nKelas : " + pointer.data.kursi);
+                liTiket.add("Kelas : " + pointer.data.kelas);
+                liTiket.add("\nKursi : " + pointer.data.kursi);
 
                 pointer = pointer.prev;
                 i++;

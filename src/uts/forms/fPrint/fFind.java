@@ -112,13 +112,18 @@ public class fFind extends javax.swing.JFrame {
 
             } else {
                 int i = 1;
+                boolean exist = false;
                 liTiket.add("------- Hasil Pencarian --------");
                 while (pointer != null && i <= 324) {
                     if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
                         //liTiket.addItem("");
                         addItem(pointer, i);
+                        exist = true;
                     }
                     pointer = pointer.next;
+                }
+                if (!exist) {
+                    javax.swing.JOptionPane.showMessageDialog(null, "Data tidak ditemukan!");
                 }
                 liTiket.add("--------- End List ---------");
             }
@@ -133,8 +138,8 @@ public class fFind extends javax.swing.JFrame {
             liTiket.add("Id : " + pointer.prev.data.id);
             liTiket.add("Nama : " + pointer.prev.data.nama);
             liTiket.add("Jadwal : " + pointer.prev.data.jadwal);
-            liTiket.add("Kursi : " + pointer.prev.data.kelas);
-            liTiket.add("\nKelas : " + pointer.prev.data.kursi);
+            liTiket.add("Kelas : " + pointer.prev.data.kelas);
+            liTiket.add("\nKursi : " + pointer.prev.data.kursi);
             i++;
         }
         
@@ -142,16 +147,16 @@ public class fFind extends javax.swing.JFrame {
         liTiket.add("Id : " + pointer.data.id);
         liTiket.add("Nama : " + pointer.data.nama);
         liTiket.add("Jadwal : " + pointer.data.jadwal);
-        liTiket.add("Kursi : " + pointer.data.kelas);
-        liTiket.add("\nKelas : " + pointer.data.kursi);
+        liTiket.add("Kelas : " + pointer.data.kelas);
+        liTiket.add("\nKursi : " + pointer.data.kursi);
         i++;
         if (pointer.next != null) {
             liTiket.add("-------------" + i + "------------\n");
             liTiket.add("Id : " + pointer.next.data.id);
             liTiket.add("Nama : " + pointer.next.data.nama);
             liTiket.add("Jadwal : " + pointer.next.data.jadwal);
-            liTiket.add("Kursi : " + pointer.next.data.kelas);
-            liTiket.add("\nKelas : " + pointer.next.data.kursi);
+            liTiket.add("Kelas : " + pointer.next.data.kelas);
+            liTiket.add("\nKursi : " + pointer.next.data.kursi);
         }
     }
     private void tbIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbIDActionPerformed
