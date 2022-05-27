@@ -110,21 +110,6 @@ public class fBatal extends javax.swing.JFrame {
 
     private void bBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBatalActionPerformed
         // TODO add your handling code here:
-        /*if (cPernyataan.isSelected()) {
-            if (bookedList.first != null) {
-                ElementBooked pointer = bookedList.first;
-                while (!(pointer.data.id.equals(tbId.getText()) && pointer.data.nama.equals(tbNama.getText()))) {
-                    pointer = pointer.next;
-                }
-                unbookedList.insertAt("", "", pointer.data.jadwal, pointer.data.kursi, pointer.data.kelas);
-                bookedList.deleteAt(tbId.getText());
-                javax.swing.JOptionPane.showMessageDialog(null, "Tiker dengan ID " + tbId.getText() + " dan nama" + tbNama.getText() + "berhasil dibatalkan");
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
-            }
-        }else{
-            javax.swing.JOptionPane.showMessageDialog(null, "Mohon centang pada pernyataan data!");
-        }*/
         if (tbId.getText().equals("") || tbNama.getText().equals("")) {
             javax.swing.JOptionPane.showMessageDialog(null, "Harap masukkan data id dan nama terlebih dahulu!");
         } else if (!cPernyataan.isSelected()) {
@@ -134,12 +119,22 @@ public class fBatal extends javax.swing.JFrame {
         } else {
             ElementBooked pointer = bookedList.first;
             while (!(pointer.data.id.equals(tbId.getText()) && pointer.data.nama.equals(tbNama.getText()))) {
+                if (pointer.next == null) {
+                    break;
+                }
                 pointer = pointer.next;
             }
-            unbookedList.insertAt("", "", pointer.data.jadwal, pointer.data.kursi, pointer.data.kelas);
-            bookedList.deleteAt(tbId.getText());
-            javax.swing.JOptionPane.showMessageDialog(null, "Tiket dengan ID " + tbId.getText() + " dan nama" + tbNama.getText() + "berhasil dibatalkan");
+            if (!(pointer.data.id.equals(tbId.getText()) && pointer.data.nama.equals(tbNama.getText()))) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Data tidak ditemukan!");
+            } else {
+                unbookedList.insertAt("", "", pointer.data.jadwal, pointer.data.kursi, pointer.data.kelas);
+                bookedList.deleteAt(tbId.getText());
+                javax.swing.JOptionPane.showMessageDialog(null, "Tiket dengan ID " + tbId.getText() + " dan nama " + tbNama.getText() + " berhasil dibatalkan");
+            }
         }
+        tbId.setText("");
+        tbNama.setText("");
+        cPernyataan.setSelected(false);
     }//GEN-LAST:event_bBatalActionPerformed
 
     private void cPernyataanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cPernyataanActionPerformed

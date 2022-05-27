@@ -1,14 +1,16 @@
 package uts;
+
 /*
 Author : Kyroline
-*/
+ */
 public class ListBooked {
+
     public ElementBooked first, last;
-    
-    ListBooked () {
+
+    ListBooked() {
         first = null;
         last = null;
-    }    
+    }
 
     public void insertFirst(String id, String nama, String jadwal, String kursi, String kelas) {
         ElementBooked elemenBaru = new ElementBooked(id, nama, jadwal, kursi, kelas);
@@ -21,7 +23,7 @@ public class ListBooked {
             last = elemenBaru;
         }
     }
-    
+
     public void insertLast(String id, String nama, String jadwal, String kursi, String kelas) {
         ElementBooked elemenBaru = new ElementBooked(id, nama, jadwal, kursi, kelas);
         if (first == null) {
@@ -43,18 +45,22 @@ public class ListBooked {
             
         }*/
     }
-    
+
     public void deleteFirst() {
         if (first == null) {
+            first = null;
+        } else if (first.next == null) {
             first = null;
         } else {
             first.next.prev = null;
             first = first.next;
         }
     }
-    
+
     public void deleteLast() {
         if (first == null) {
+            first = null;
+        } else if (first.next == null) {
             first = null;
         } else {
             last.prev.next = null;
@@ -70,7 +76,7 @@ public class ListBooked {
             pointer.next = null;
         }*/
     }
-    
+
     public void insertAt(String tujuan, String tujuanNama, String id, String nama, String jadwal, String kursi, String kelas) {
         ElementBooked elemenBaru = new ElementBooked(id, nama, jadwal, kursi, kelas);
         if (first.data.id.equals(tujuan) && first.data.nama.equals(tujuanNama)) {
@@ -86,21 +92,20 @@ public class ListBooked {
             last = elemenBaru;
         } else {
             ElementBooked pointer = first;
-            while(pointer.next != null) {
-                if(pointer.data.id.equals(tujuan) && pointer.data.nama.equals(tujuanNama)) {
+            while (pointer.next != null) {
+                if (pointer.data.id.equals(tujuan) && pointer.data.nama.equals(tujuanNama)) {
                     elemenBaru.next = pointer.next;
-                    elemenBaru.prev = pointer;           
+                    elemenBaru.prev = pointer;
                     pointer.next.prev = elemenBaru;
                     pointer.next = elemenBaru;
                     break;
-                } 
-                else {
+                } else {
                     pointer = pointer.next;
                 }
             }
         }
     }
-    
+
     public void deleteAt(String tujuan) {
         if (first.data.id.equals(tujuan)) {
             if (first.next != null) {
@@ -110,27 +115,25 @@ public class ListBooked {
         } else if (last.data.id.equals(tujuan)) {
             last.prev.next = null;
             last = last.prev;
-        }
-        else {
+        } else {
             ElementBooked pointer = first;
-            while(pointer.next != null){
-                if (pointer.next.data.id.equals(tujuan)) {    
+            while (pointer.next != null) {
+                if (pointer.next.data.id.equals(tujuan)) {
                     pointer.next.next.prev = pointer;
                     pointer.next = pointer.next.next;
-                } 
-                else {
+                } else {
                     pointer = pointer.next;
                 }
             }
         }
     }
-    
+
     public void printFirst() {
         ElementBooked pointer = first;
         if (first == null) {
             System.out.println("LINKED LIST KOSONG");
         } else {
-             while (pointer != null) {
+            while (pointer != null) {
                 System.out.print((pointer.data.id) + "\t");
                 System.out.print((pointer.data.nama) + "\t");
                 System.out.print((pointer.data.jadwal) + "\t");
@@ -140,7 +143,7 @@ public class ListBooked {
             }
         }
     }
-    
+
     public void printLast() {
         ElementBooked pointer = last;
         if (last == null) {

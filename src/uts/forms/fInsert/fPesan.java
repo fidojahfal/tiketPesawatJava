@@ -175,22 +175,26 @@ public class fPesan extends javax.swing.JFrame {
                                 .addComponent(imgBisnis1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(imgFirstClass))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cbJadwal, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1)
-                                    .addComponent(cbKelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(14, 14, 14)
-                                    .addComponent(tbNama, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(tbNama, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(cbKelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(45, 45, 45)
+                                            .addComponent(cbJadwal, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -257,10 +261,12 @@ public class fPesan extends javax.swing.JFrame {
             } else if (cbKelas.getSelectedItem() == "First Class") {
                 id = "FC";
             }
-            if (bookedList.first != null) {
+            if (bookedList.first == null) {
+                id = id + getAlphaNumericString(4);
+            } else {
                 boolean valid = false;
                 String idTemp;
-                 do{
+                do {
                     ElementBooked pointer = bookedList.first;
                     idTemp = id + getAlphaNumericString(4);
                     while (pointer != null) {
@@ -270,41 +276,42 @@ public class fPesan extends javax.swing.JFrame {
                             id = idTemp;
                             break;
                         }
-                        if(pointer.next == null && !(pointer.data.id.equals(idTemp))){
+                        if (pointer.next == null && !(pointer.data.id.equals(idTemp))) {
                             valid = false;
                             break;
                         }
                         pointer = pointer.next;
                     }
-                }while (valid);
-                 id = idTemp;
-            } else {
-                id = id + getAlphaNumericString(4);
+                } while (valid);
+                id = idTemp;
             }
-            if (type == 1) {
-                bookedList.insertFirst(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
+            switch (type) {
+                case 1:
+                    bookedList.insertFirst(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
+                            (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
+                    unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
+                            (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
+                    javax.swing.JOptionPane.showMessageDialog(null, "Tiket Berhasil Dipesan dengan ID : " + id);
+                    tbNama.setText("");
+                    cbJadwal.setSelectedIndex(0);
+                    cbKelas.setSelectedIndex(0);
+                    cSure.setSelected(false);
+                    break;
+                case 2:
+                    fPesanAt f = new fPesanAt(tbNama, cbJadwal, cbKelas, cbKursi, cSure, unbookedList, bookedList);
+                    f.setVisible(true);
+                    break;
+                default:
+                    bookedList.insertLast(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
                         (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
-
-                unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
-                        , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
-                javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
-                tbNama.setText("");
-                cbJadwal.setSelectedIndex(0);
-                cbKelas.setSelectedIndex(0);
-            } else if (type == 2) {                                           
-                fPesanAt f = new fPesanAt(tbNama, cbJadwal, cbKelas, cbKursi, unbookedList, bookedList);
-                f.setVisible(true);
-            }
-            else {
-                bookedList.insertLast(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
+                    unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem(),
                         (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
-
-                unbookedList.insertAt(id, tbNama.getText(), (String) cbJadwal.getSelectedItem()
-                        , (String) cbKursi.getSelectedItem(), (String) cbKelas.getSelectedItem());
-                javax.swing.JOptionPane.showMessageDialog(null, "Tiker Berhasil Dipesan");
-                tbNama.setText("");
-                cbJadwal.setSelectedIndex(0);
-                cbKelas.setSelectedIndex(0);
+                    javax.swing.JOptionPane.showMessageDialog(null, "Tiket Berhasil Dipesan dengan ID : " + id);
+                    tbNama.setText("");
+                    cbJadwal.setSelectedIndex(0);
+                    cbKelas.setSelectedIndex(0);
+                    cSure.setSelected(false);
+                    break;
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed

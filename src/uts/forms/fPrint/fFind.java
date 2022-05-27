@@ -116,7 +116,6 @@ public class fFind extends javax.swing.JFrame {
                 while (pointer != null && i <= 324) {
                     if (pointer.data.nama.equals(tbNama.getText()) && pointer.data.id.equals(tbID.getText())) {
                         //liTiket.addItem("");
-                        liTiket.add("-------------" + i + "------------\n");
                         addItem(pointer, i);
                     }
                     pointer = pointer.next;
@@ -124,10 +123,13 @@ public class fFind extends javax.swing.JFrame {
                 liTiket.add("--------- End List ---------");
             }
         }
+        tbID.setText("");
+        tbNama.setText("");
     }//GEN-LAST:event_bCariActionPerformed
 
     private void addItem(ElementBooked pointer, int i) {
         if (pointer.prev != null) {
+            liTiket.add("-------------" + i + "------------\n");
             liTiket.add("Id : " + pointer.prev.data.id);
             liTiket.add("Nama : " + pointer.prev.data.nama);
             liTiket.add("Jadwal : " + pointer.prev.data.jadwal);

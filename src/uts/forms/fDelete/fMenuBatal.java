@@ -112,25 +112,25 @@ public class fMenuBatal extends javax.swing.JFrame {
 
     private void bDeleteFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDeleteFirstActionPerformed
         // TODO add your handling code here:
-        if (bookedList.first != null) {
-            unbookedList.insertAt("", "", bookedList.first.data.jadwal, bookedList.first.data.kursi, 
+        if (bookedList.first == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
+        } else {
+            unbookedList.insertAt("", "", bookedList.first.data.jadwal, bookedList.first.data.kursi,
                     bookedList.first.data.kelas);
             bookedList.deleteFirst();
             javax.swing.JOptionPane.showMessageDialog(null, "Tiker pada urutan pertama berhasil dibatalkan");
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
         }
     }//GEN-LAST:event_bDeleteFirstActionPerformed
 
     private void bDeleteLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDeleteLastActionPerformed
         // TODO add your handling code here:
-        if (bookedList.first != null) {
-            unbookedList.insertAt("", "", bookedList.last.data.jadwal, bookedList.last.data.kursi, 
+        if (bookedList.first == null) {
+            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
+        } else {
+            unbookedList.insertAt("", "", bookedList.last.data.jadwal, bookedList.last.data.kursi,
                     bookedList.last.data.kelas);
             bookedList.deleteLast();
             javax.swing.JOptionPane.showMessageDialog(null, "Tiker pada urutan terakhir berhasil dibatalkan");
-        } else {
-            javax.swing.JOptionPane.showMessageDialog(null, "Daftar Tiket Pemesan Kosong!");
         }
     }//GEN-LAST:event_bDeleteLastActionPerformed
 

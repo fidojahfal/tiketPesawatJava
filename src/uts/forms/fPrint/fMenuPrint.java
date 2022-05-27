@@ -154,7 +154,7 @@ public class fMenuPrint extends javax.swing.JFrame {
                 liTiket.add("Kursi : " + pointer.data.kelas);
                 liTiket.add("\nKelas : " + pointer.data.kursi);
 
-                pointer = pointer.next;
+                pointer = pointer.prev;
                 i++;
             }
             liTiket.add("--------- End List ---------");
